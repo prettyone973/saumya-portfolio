@@ -1,6 +1,6 @@
 import Navbar from "../../../components/Navbar";
 import PhaseCard from "../../../components/case-studies/PhaseCard";
-import Sitemap from "../../../components/case-studies/Sitemap";
+import IdeatePanel from "../../../components/case-studies/panels/IdeatePanel";
 
 export default function Ideate() {
   return (
@@ -17,10 +17,7 @@ export default function Ideate() {
         />
 
         <div className="rounded-xl border border-paper-border bg-paper p-8 sm:p-14">
-          <h2 className="mb-10 font-['Instrument_Sans'] text-2xl font-bold text-navy sm:text-4xl">
-            Sitemap
-          </h2>
-          <Sitemap />
+          <IdeatePanel />
         </div>
       </div>
     </div>

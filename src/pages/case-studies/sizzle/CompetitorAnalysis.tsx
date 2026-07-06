@@ -1,6 +1,6 @@
 import Navbar from "../../../components/Navbar";
 import PhaseCard from "../../../components/case-studies/PhaseCard";
-import CompetitorAnalysisTable from "../../../components/case-studies/CompetitorAnalysisTable";
+import CompetitorAnalysisPanel from "../../../components/case-studies/panels/CompetitorAnalysisPanel";
 
 export default function CompetitorAnalysis() {
   return (
@@ -17,8 +17,8 @@ export default function CompetitorAnalysis() {
           }}
         />
 
-        <div className="rounded-xl border border-paper-border bg-paper p-2 sm:p-2.5">
-          <CompetitorAnalysisTable />
+        <div className="rounded-xl border border-paper-border bg-paper p-6 sm:p-10">
+          <CompetitorAnalysisPanel />
         </div>
       </div>
     </div>
