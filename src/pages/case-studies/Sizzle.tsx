@@ -1,0 +1,119 @@
+import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar";
+import CartIllustration from "../../components/case-studies/CartIllustration";
+import PhaseCard, { type Phase } from "../../components/case-studies/PhaseCard";
+import backArrow from "../../assets/case-studies/sizzle/back-arrow.svg";
+import onlineGroceries from "../../assets/case-studies/sizzle/online-groceries.svg";
+
+const phases: Phase[] = [
+  {
+    number: "01",
+    title: "Competitor analysis",
+    description: "Yummly, Paprika, and Instagram benchmarked across usability and features",
+  },
+  {
+    number: "02",
+    title: "Empathize",
+    description: "User surveys, stakeholder interviews, and in-person user interviews",
+  },
+  {
+    number: "03",
+    title: "Define",
+    description: "User personas, empathy maps, problem statement, and user journey mapping",
+  },
+  {
+    number: "04",
+    title: "Ideate",
+    description: "Information architecture, user flows, and feature prioritization",
+  },
+  {
+    number: "05",
+    title: "Wireframes",
+    description: "Low-fidelity wireframes across all key screens and user flows",
+  },
+];
+
+export default function Sizzle() {
+  return (
+    <div className="paper-texture min-h-screen bg-beige">
+      <Navbar tone="light" />
+
+      <div className="mx-auto max-w-[1280px] px-8 py-16 sm:px-14">
+        <div className="flex items-center gap-6 sm:gap-11">
+          <Link to="/work" aria-label="Back to my work" className="shrink-0 transition-opacity hover:opacity-70">
+            <img src={backArrow} alt="" className="h-6 w-9 sm:h-9 sm:w-14" />
+          </Link>
+          <h1 className="font-display text-3xl text-navy sm:text-4xl">Sizzle- a cooking buddy</h1>
+        </div>
+        <h2 className="mt-8 font-['Instrument_Sans'] text-4xl font-medium text-ink sm:text-6xl">
+          Project Overview
+        </h2>
+
+        <div className="mt-16 flex flex-col gap-20 sm:mt-24 sm:gap-28">
+          <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-end lg:gap-20">
+            <div className="flex flex-col items-start gap-5 text-clay sm:gap-7">
+              <p className="font-['Instrument_Sans'] text-xl font-medium sm:text-[28px]">
+                THE PROBLEM
+              </p>
+              <div className="flex flex-col gap-3 sm:gap-4">
+                <p className="text-2xl font-semibold sm:text-[32px]">
+                  Cooking is overwhelming without the right tools.
+                </p>
+                <p className="text-lg sm:text-[28px]">
+                  Users want a smart cooking app that understands their preferences and offers
+                  customizable meal plans, personalized recipe recommendations, and smart shopping
+                  lists —all in one place.
+                </p>
+              </div>
+            </div>
+            <CartIllustration />
+          </div>
+
+          <div className="flex flex-col items-center gap-10 lg:flex-row lg:gap-20">
+            <img
+              src={onlineGroceries}
+              alt=""
+              className="aspect-[314/296.812] w-full max-w-[314px] shrink-0 object-contain"
+            />
+            <div className="flex flex-col items-start gap-5 text-clay sm:gap-7">
+              <p className="font-['Instrument_Sans'] text-xl font-medium sm:text-[28px]">
+                THE SOLUTION
+              </p>
+              <div className="flex flex-col gap-3 sm:gap-4">
+                <p className="text-2xl font-semibold sm:text-[32px]">
+                  A personal chef in your pocket.
+                </p>
+                <p className="text-lg sm:text-[28px]">
+                  Sizzle helps users find recipes by their requirements through personalized
+                  recommendations. It offers voice-guided cooking, smart meal planning, pantry
+                  management, and intelligent grocery lists.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-20 sm:mt-28">
+          <h2 className="font-['Instrument_Sans'] text-4xl font-medium text-ink sm:text-6xl">
+            How I got there
+          </h2>
+          <div className="mt-4 flex flex-col gap-3 text-clay sm:mt-6">
+            <p className="font-['Instrument_Sans'] text-xl font-semibold sm:text-[32px]">
+              THE DESIGN PROCESS
+            </p>
+            <p className="max-w-[766px] text-lg sm:text-[28px]">
+              A human-centered design process from stakeholder interviews to low-fidelity
+              wireframes. Click each phase to explore the work.
+            </p>
+          </div>
+
+          <div className="mt-10 flex flex-col gap-6 sm:mt-12 sm:gap-8">
+            {phases.map((phase) => (
+              <PhaseCard key={phase.number} phase={phase} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

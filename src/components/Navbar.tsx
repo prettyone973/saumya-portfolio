@@ -4,6 +4,7 @@ import dot from "../assets/icons/dot.svg";
 const navLinks = [
   { label: "HOME", to: "/" },
   { label: "ABOUT ME", to: "/about" },
+  { label: "MY WORK", to: "/work" },
   { label: "CONTACT", to: "/contact" },
 ];
 
