@@ -10,6 +10,7 @@ const navLinks = [
 export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const mutedText = tone === "dark" ? "text-gold-muted" : "text-navy/60";
   const activeText = tone === "dark" ? "text-gold-muted border-gold-muted" : "text-navy border-navy";
+  const hoverBorder = tone === "dark" ? "hover:border-gold-muted" : "hover:border-navy";
   const nameText = tone === "dark" ? "text-gold" : "text-navy";
 
   return (
@@ -30,8 +31,8 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
             to={link.to}
             end={link.to === "/"}
             className={({ isActive }) =>
-              `border-b-[2.5px] px-2 py-2 text-2xl font-normal tracking-wide ${
-                isActive ? activeText : `border-transparent ${mutedText}`
+              `border-b-[2.5px] px-2 py-2 text-2xl font-normal tracking-wide transition-colors duration-150 ${
+                isActive ? activeText : `border-transparent ${mutedText} ${hoverBorder}`
               }`
             }
           >

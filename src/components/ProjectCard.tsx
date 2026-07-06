@@ -74,25 +74,25 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
                 : "0 4px 18px -4px rgba(46,42,31,0.1)",
           }}
           transition={{ duration: 0.22, ease: "easeOut" }}
-          className="paper-texture relative w-full overflow-hidden rounded-3xl border border-paper-border bg-paper"
+          className="paper-texture relative aspect-[766/448] w-full overflow-hidden rounded-3xl border border-paper-border bg-paper"
           style={{ transformStyle: "preserve-3d" }}
         >
-          <div className="flex items-center gap-8 p-9 sm:gap-12 sm:p-12">
+          <div className="flex h-full items-center gap-6 overflow-hidden p-8 sm:gap-10 sm:p-10">
             <img
               src={project.mockup}
               alt=""
-              className="h-[280px] w-auto shrink-0 object-contain sm:h-[340px]"
+              className="h-full w-28 shrink-0 object-contain sm:w-32"
             />
-            <div className="flex min-w-0 flex-col items-start gap-4">
-              <div className="flex flex-col items-start gap-5">
+            <div className="flex h-full min-w-0 flex-1 flex-col items-start justify-start gap-3 overflow-hidden">
+              <div className="flex flex-col items-start gap-3">
                 <span className="rounded-full bg-navy px-3 py-1.5 text-sm font-medium text-gold whitespace-nowrap">
                   {project.badge}
                 </span>
-                <h3 className="font-display text-2xl text-navy sm:text-[28px]">
+                <h3 className="font-display text-xl text-navy sm:text-2xl">
                   {project.title}
                 </h3>
               </div>
-              <p className="text-base text-ink sm:text-lg">{project.description}</p>
+              <p className="line-clamp-2 text-sm text-ink sm:text-base">{project.description}</p>
               <div className="flex flex-col items-start gap-2">
                 {project.tagRows.map((row, i) => (
                   <div key={i} className="flex flex-wrap items-center gap-8">

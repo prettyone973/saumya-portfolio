@@ -18,7 +18,7 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.25 }}
-      className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16"
+      className="grid grid-cols-1 gap-10 xl:grid-cols-2 xl:gap-16"
     >
       {projects.map((project) => (
         <ProjectCard
