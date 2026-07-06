@@ -5,6 +5,7 @@ import Contact from "./pages/Contact";
 import Work from "./pages/Work";
 import CaseStudy from "./pages/CaseStudy";
 import SizzleCaseStudy from "./pages/case-studies/Sizzle";
+import SizzleCompetitorAnalysis from "./pages/case-studies/sizzle/CompetitorAnalysis";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/work" element={<Work />} />
       <Route path="/work/sizzle" element={<SizzleCaseStudy />} />
+      <Route path="/work/sizzle/competitor-analysis" element={<SizzleCompetitorAnalysis />} />
       <Route path="/work/:slug" element={<CaseStudy />} />
     </Routes>
   );
