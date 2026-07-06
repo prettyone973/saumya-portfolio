@@ -9,6 +9,7 @@ import SizzleCompetitorAnalysis from "./pages/case-studies/sizzle/CompetitorAnal
 import SizzleEmpathize from "./pages/case-studies/sizzle/Empathize";
 import SizzleDefine from "./pages/case-studies/sizzle/Define";
 import SizzleIdeate from "./pages/case-studies/sizzle/Ideate";
+import SizzleWireframes from "./pages/case-studies/sizzle/Wireframes";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
       <Route path="/work/sizzle/empathize" element={<SizzleEmpathize />} />
       <Route path="/work/sizzle/define" element={<SizzleDefine />} />
       <Route path="/work/sizzle/ideate" element={<SizzleIdeate />} />
+      <Route path="/work/sizzle/wireframes" element={<SizzleWireframes />} />
       <Route path="/work/:slug" element={<CaseStudy />} />
     </Routes>
   );
