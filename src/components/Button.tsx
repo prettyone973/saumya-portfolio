@@ -10,10 +10,12 @@ const variantStyles: Record<Variant, string> = {
   primary:
     "bg-gold text-navy origin-bottom transition-[filter,transform] duration-100 ease-out hover:brightness-110 hover:scale-y-90 active:scale-y-80",
   // Outline "thickness" is simulated with an inset box-shadow rather than the
-  // border property, so growing it on hover/active never changes the button's
-  // layout size — only border/box-shadow would otherwise add to the box.
+  // border property, so growing it on hover never changes the button's layout
+  // size — only border/box-shadow would otherwise add to the box. Click/active
+  // reuses the site's standard scale-up feedback rather than a distinct
+  // "pressed further" outline state.
   secondary:
-    "bg-transparent text-gold shadow-[inset_0_0_0_1px_#e0c68f] transition-shadow duration-120 ease-out hover:shadow-[inset_0_0_0_2px_#e0c68f] active:shadow-[inset_0_0_0_3px_#e0c68f]",
+    "bg-transparent text-gold shadow-[inset_0_0_0_1px_#e0c68f] transition-[box-shadow,transform] duration-120 ease-out hover:shadow-[inset_0_0_0_2px_#e0c68f] active:scale-105",
 };
 
 type CommonProps = {
