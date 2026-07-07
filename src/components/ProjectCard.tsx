@@ -80,7 +80,7 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
           id,
           x: e.clientX - rect.left,
           y: e.clientY - rect.top,
-          size: 6 + Math.random() * 5,
+          size: 16 + Math.random() * 10,
           rotate: Math.random() * 60 - 30,
         },
       ]);
@@ -125,7 +125,7 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
             <img
               src={project.mockup}
               alt=""
-              className="h-60 w-28 shrink-0 object-contain sm:h-72 sm:w-32"
+              className="h-52 w-28 shrink-0 object-contain sm:h-64 sm:w-32"
             />
             <div className="flex min-w-0 flex-1 flex-col items-start justify-start gap-3">
               <div className="flex flex-col items-start gap-3">
@@ -136,7 +136,7 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
                   {project.title}
                 </h3>
               </div>
-              <p className="text-sm text-ink sm:text-base">{project.description}</p>
+              <p className="line-clamp-2 text-sm text-ink sm:text-base">{project.description}</p>
               <div className="flex flex-col items-start gap-2">
                 {project.tagRows.map((row, i) => (
                   <div key={i} className="flex flex-wrap items-center gap-8">

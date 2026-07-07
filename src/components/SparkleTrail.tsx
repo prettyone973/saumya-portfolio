@@ -35,7 +35,7 @@ export default function SparkleTrail({ sparkles }: { sparkles: SparklePoint[] })
                 height: s.size,
                 marginLeft: -width / 2,
                 marginTop: -s.size / 2,
-                filter: "drop-shadow(0 0 3px rgba(184,134,11,0.6))",
+                filter: "drop-shadow(0 0 4px rgba(184,134,11,0.6))",
               }}
             >
               <svg viewBox="0 0 20 28" width="100%" height="100%" fill="none">
