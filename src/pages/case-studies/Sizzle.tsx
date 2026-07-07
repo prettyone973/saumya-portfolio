@@ -90,7 +90,7 @@ export default function Sizzle() {
         </h2>
 
         <div className="mt-16 flex flex-col gap-20 sm:mt-24 sm:gap-28">
-          <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-end lg:gap-20">
+          <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-start lg:gap-20">
             <div className="flex flex-col items-start gap-5 text-clay sm:gap-7">
               <p className="font-['Instrument_Sans'] text-base font-medium sm:text-xl">
                 THE PROBLEM

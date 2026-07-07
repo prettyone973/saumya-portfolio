@@ -42,8 +42,8 @@ export default function About() {
 
         <section className="mt-20 sm:mt-28">
           <SectionHeading>My journey</SectionHeading>
-          <div className="mt-8 flex flex-col gap-6 rounded-xl border border-paper-border bg-navy px-8 py-8 sm:mt-10 sm:px-10 sm:py-9">
-            <p className="max-w-[760px] text-base text-cream-text sm:text-xl">
+          <div className="mt-8 flex flex-col gap-6 sm:mt-10">
+            <p className="max-w-[720px] text-base text-cream-text sm:text-xl">
               Hi, I am Saumya Mehta. My journey started from Sanskrit and led me to pursue HCI.
               Learning Sanskrit wasn't just linguistics, but it was an immersion into a world of
               literature, philosophy and rigid grammatical logic. This background helped me
@@ -54,7 +54,7 @@ export default function About() {
               must be a field where I can combine my problem solving skills and creativity, and I
               came across HCI — which seemed a perfect fit for me.
             </p>
-            <p className="max-w-[760px] text-base text-cream-text sm:text-xl">
+            <p className="max-w-[720px] text-base text-cream-text sm:text-xl">
               After my undergraduate studies I dedicated a year to learn fundamentals of UI/UX
               and did a specialized Diploma in UI/UX. This path led me to work at two valuable
               internships, where I got a chance to apply my problem solving skills to the real
