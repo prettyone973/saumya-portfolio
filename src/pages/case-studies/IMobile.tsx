@@ -12,24 +12,24 @@ type PhaseId = "before-after" | "heuristic-evaluation" | "design-system";
 
 const phases: (Phase & { id: PhaseId })[] = [
   {
-    id: "before-after",
-    number: "01",
-    title: "Before & After",
-    description:
-      "Comparing the cluttered original screens to the redesigned, simplified experience",
-  },
-  {
     id: "heuristic-evaluation",
-    number: "02",
+    number: "01",
     title: "Heuristic Evaluation",
     description:
       "Evaluating usability issues in the original design against established heuristics",
   },
   {
     id: "design-system",
-    number: "03",
+    number: "02",
     title: "Design System",
     description: "Colors, typography, and style guide used in the redesign",
+  },
+  {
+    id: "before-after",
+    number: "03",
+    title: "Before & After",
+    description:
+      "Comparing the cluttered original screens to the redesigned, simplified experience",
   },
 ];
 
