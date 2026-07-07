@@ -6,9 +6,10 @@ import PhaseOverlay from "../../components/case-studies/PhaseOverlay";
 import BeforeAfterPanel from "../../components/case-studies/panels/BeforeAfterPanel";
 import HeuristicEvaluationPanel from "../../components/case-studies/panels/HeuristicEvaluationPanel";
 import DesignSystemPanel from "../../components/case-studies/panels/DesignSystemPanel";
+import IMobilePrototypePanel from "../../components/case-studies/panels/IMobilePrototypePanel";
 import backArrow from "../../assets/case-studies/sizzle/back-arrow.svg";
 
-type PhaseId = "before-after" | "heuristic-evaluation" | "design-system";
+type PhaseId = "before-after" | "heuristic-evaluation" | "design-system" | "prototype";
 
 const phases: (Phase & { id: PhaseId })[] = [
   {
@@ -31,12 +32,19 @@ const phases: (Phase & { id: PhaseId })[] = [
     description:
       "Comparing the cluttered original screens to the redesigned, simplified experience",
   },
+  {
+    id: "prototype",
+    number: "04",
+    title: "Prototype",
+    description: "A linear prototype flow demonstrating onboarding and security PIN changes",
+  },
 ];
 
 const panelComponents: Record<PhaseId, React.ComponentType> = {
   "before-after": BeforeAfterPanel,
   "heuristic-evaluation": HeuristicEvaluationPanel,
   "design-system": DesignSystemPanel,
+  prototype: IMobilePrototypePanel,
 };
 
 export default function IMobile() {
