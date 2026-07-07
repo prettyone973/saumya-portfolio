@@ -30,13 +30,13 @@ export default function CompetitorAnalysisTable() {
       <table className="w-full table-fixed border-collapse">
         <thead>
           <tr className="border-b border-white/10">
-            <th className="w-1/3 px-6 py-6 text-left text-xl font-bold text-[#e9c98a] sm:px-10 sm:py-7 sm:text-[28px]">
+            <th className="w-1/3 px-6 py-6 text-left text-lg font-bold text-[#e9c98a] sm:px-10 sm:py-7 sm:text-2xl">
               Parameter
             </th>
-            <th className="w-1/3 border-l border-white/10 px-6 py-6 text-left text-xl font-bold text-[#e9c98a] sm:px-10 sm:py-7 sm:text-[28px]">
+            <th className="w-1/3 border-l border-white/10 px-6 py-6 text-left text-lg font-bold text-[#e9c98a] sm:px-10 sm:py-7 sm:text-2xl">
               Yuumly
             </th>
-            <th className="w-1/3 border-l border-white/10 px-6 py-6 text-left text-xl font-bold text-[#e9c98a] sm:px-10 sm:py-7 sm:text-[28px]">
+            <th className="w-1/3 border-l border-white/10 px-6 py-6 text-left text-lg font-bold text-[#e9c98a] sm:px-10 sm:py-7 sm:text-2xl">
               Paprika
             </th>
           </tr>
@@ -44,13 +44,13 @@ export default function CompetitorAnalysisTable() {
         <tbody>
           {rows.map((row, i) => (
             <tr key={row.parameter} className={i > 0 ? "border-t border-white/10" : undefined}>
-              <td className="px-6 py-6 align-top text-base font-bold text-[#e9c98a] sm:px-10 sm:py-7 sm:text-xl">
+              <td className="px-6 py-6 align-top text-sm font-bold text-[#e9c98a] sm:px-10 sm:py-7 sm:text-lg">
                 {row.parameter}
               </td>
-              <td className="border-l border-white/10 px-6 py-6 align-top text-base font-bold text-[#e9c98a] sm:px-10 sm:py-7 sm:text-xl">
+              <td className="border-l border-white/10 px-6 py-6 align-top text-sm font-bold text-[#e9c98a] sm:px-10 sm:py-7 sm:text-lg">
                 {row.yuumly}
               </td>
-              <td className="border-l border-white/10 px-6 py-6 align-top text-base font-bold text-[#e9c98a] sm:px-10 sm:py-7 sm:text-xl">
+              <td className="border-l border-white/10 px-6 py-6 align-top text-sm font-bold text-[#e9c98a] sm:px-10 sm:py-7 sm:text-lg">
                 {row.paprika}
               </td>
             </tr>

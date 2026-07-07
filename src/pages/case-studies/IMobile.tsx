@@ -56,7 +56,7 @@ export default function IMobile() {
     <div className="paper-texture min-h-screen bg-beige">
       <Navbar tone="light" />
 
-      <div className="mx-auto max-w-[1280px] px-8 py-16 sm:px-14">
+      <div className="mx-auto max-w-[1280px] px-6 py-16 sm:px-10 lg:px-16 xl:px-20">
         <div className="flex items-center gap-6 sm:gap-11">
           <Link
             to="/work"
@@ -65,18 +65,18 @@ export default function IMobile() {
           >
             <img src={backArrow} alt="" className="h-6 w-9 sm:h-9 sm:w-14" />
           </Link>
-          <h1 className="font-display text-3xl text-navy sm:text-4xl">iMobile App Redesign</h1>
+          <h1 className="font-display text-2xl text-navy sm:text-[32px]">iMobile App Redesign</h1>
         </div>
-        <h2 className="mt-8 font-['Instrument_Sans'] text-4xl font-medium text-ink sm:text-6xl">
+        <h2 className="mt-8 font-['Instrument_Sans'] text-[28px] font-medium text-ink sm:text-[38px]">
           Project Overview
         </h2>
 
         <div className="mt-16 flex flex-col gap-14 sm:mt-24 sm:gap-20">
           <div className="flex flex-col items-start gap-5 text-clay sm:gap-7">
-            <p className="font-['Instrument_Sans'] text-xl font-medium sm:text-[28px]">
+            <p className="font-['Instrument_Sans'] text-base font-medium sm:text-xl">
               THE PROBLEM
             </p>
-            <p className="max-w-[900px] text-lg sm:text-[28px]">
+            <p className="max-w-[760px] text-base sm:text-xl">
               The app's screen is cluttered, with excessive use of icons and inconsistent colour.
               The navigation seems complicated and confusing, with the same icons used for several
               features. Overusing icons for the same feature in multiple places becomes
@@ -86,10 +86,10 @@ export default function IMobile() {
           </div>
 
           <div className="flex flex-col items-start gap-5 text-clay sm:gap-7">
-            <p className="font-['Instrument_Sans'] text-xl font-medium sm:text-[28px]">
+            <p className="font-['Instrument_Sans'] text-base font-medium sm:text-xl">
               THE SOLUTION
             </p>
-            <p className="max-w-[900px] text-lg sm:text-[28px]">
+            <p className="max-w-[760px] text-base sm:text-xl">
               Rearranging the home screen to remove clutter and lessen cognitive load. Making the
               navigation simple and easy to understand by removing unnecessary steps. Creating
               consistency in colours and icons. Building a seamless and easy-to-understand user
@@ -99,7 +99,7 @@ export default function IMobile() {
         </div>
 
         <div className="mt-20 sm:mt-28">
-          <h2 className="font-['Instrument_Sans'] text-4xl font-medium text-ink sm:text-6xl">
+          <h2 className="font-['Instrument_Sans'] text-[28px] font-medium text-ink sm:text-[38px]">
             How I got there
           </h2>
 

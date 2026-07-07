@@ -16,30 +16,30 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
 
   return (
     <nav
-      className={`flex w-full items-center justify-between border-b px-10 pb-6 pt-6 ${
-        tone === "dark" ? "border-white/10" : "border-navy/10"
-      }`}
+      className={`w-full border-b ${tone === "dark" ? "border-white/10" : "border-navy/10"}`}
     >
-      <div className="flex items-center gap-3">
-        <span className={`font-display text-3xl ${nameText}`}>Saumya Mehta</span>
-        <img src={dot} alt="" className="size-6" />
-        <span className={`font-display text-3xl ${nameText}`}>Product Designer</span>
-      </div>
-      <div className="flex items-center gap-9">
-        {navLinks.map((link) => (
-          <NavLink
-            key={link.to}
-            to={link.to}
-            end={link.to === "/"}
-            className={({ isActive }) =>
-              `border-b-[2.5px] px-2 py-2 text-2xl font-normal tracking-wide transition-colors duration-150 ${
-                isActive ? activeText : `border-transparent ${mutedText} ${hoverBorder}`
-              }`
-            }
-          >
-            {link.label}
-          </NavLink>
-        ))}
+      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-6 pb-6 pt-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="flex items-center gap-3">
+          <span className={`font-display text-2xl ${nameText}`}>Saumya Mehta</span>
+          <img src={dot} alt="" className="size-5" />
+          <span className={`font-display text-2xl ${nameText}`}>Product Designer</span>
+        </div>
+        <div className="flex items-center gap-9">
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.to === "/"}
+              className={({ isActive }) =>
+                `border-b-[2.5px] px-2 py-2 text-xl font-normal tracking-wide transition-colors duration-150 ${
+                  isActive ? activeText : `border-transparent ${mutedText} ${hoverBorder}`
+                }`
+              }
+            >
+              {link.label}
+            </NavLink>
+          ))}
+        </div>
       </div>
     </nav>
   );

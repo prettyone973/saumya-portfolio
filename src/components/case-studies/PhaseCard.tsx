@@ -29,7 +29,7 @@ export default function PhaseCard({
           interactive ? "group-hover:shadow-[0_8px_24px_-8px_rgba(46,42,31,0.18)]" : ""
         }`}
       >
-        <span className="font-['Instrument_Sans'] text-3xl font-medium text-ink sm:text-4xl">
+        <span className="font-['Instrument_Sans'] text-2xl font-medium text-ink sm:text-[30px]">
           {phase.number}
         </span>
       </div>
@@ -39,7 +39,7 @@ export default function PhaseCard({
         }`}
       >
         <div className="flex flex-1 flex-col gap-2">
-          <h3 className="font-['Instrument_Sans'] text-2xl font-medium text-ink sm:text-[32px]">
+          <h3 className="font-['Instrument_Sans'] text-xl font-medium text-ink sm:text-2xl">
             {phase.title}
           </h3>
           <p className="text-base text-clay sm:text-xl">{phase.description}</p>

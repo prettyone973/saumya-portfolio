@@ -7,7 +7,7 @@ export default function Define() {
     <div className="paper-texture min-h-screen bg-beige">
       <Navbar tone="light" />
 
-      <div className="mx-auto flex max-w-[1280px] flex-col gap-6 px-8 py-16 sm:px-14">
+      <div className="mx-auto flex max-w-[1280px] flex-col gap-6 px-6 py-16 sm:px-10 lg:px-16 xl:px-20">
         <PhaseCard
           phase={{
             number: "03",

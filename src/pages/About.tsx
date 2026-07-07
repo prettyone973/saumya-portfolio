@@ -15,7 +15,7 @@ const skillRows = [
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="font-['Instrument_Sans'] text-4xl font-semibold text-gold sm:text-5xl">
+    <h2 className="font-['Instrument_Sans'] text-[28px] font-semibold text-gold sm:text-[38px]">
       {children}
     </h2>
   );
@@ -25,11 +25,11 @@ export default function About() {
   return (
     <div className="min-h-screen bg-navy-deep">
       <Navbar tone="dark" />
-      <div className="mx-auto max-w-[1280px] px-10 py-16">
+      <div className="mx-auto max-w-[1280px] px-6 py-16 sm:px-10 lg:px-16 xl:px-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex max-w-[728px] flex-col gap-6">
-            <h1 className="font-display text-5xl text-cream-text sm:text-6xl">About Me</h1>
-            <p className="max-w-[600px] text-2xl text-gold-muted sm:text-[28px]">
+          <div className="flex max-w-[680px] flex-col gap-6">
+            <h1 className="font-display text-[40px] text-cream-text sm:text-[52px]">About Me</h1>
+            <p className="max-w-[600px] text-lg text-gold-muted sm:text-xl">
               Product designer with an interdisciplinary, research-driven approach to design.
             </p>
           </div>
@@ -43,7 +43,7 @@ export default function About() {
         <section className="mt-20 sm:mt-28">
           <SectionHeading>My journey</SectionHeading>
           <div className="mt-8 flex flex-col gap-6 rounded-xl border border-paper-border bg-navy px-8 py-8 sm:mt-10 sm:px-10 sm:py-9">
-            <p className="text-lg text-cream-text sm:text-[28px]">
+            <p className="max-w-[760px] text-base text-cream-text sm:text-xl">
               Hi, I am Saumya Mehta. My journey started from Sanskrit and led me to pursue HCI.
               Learning Sanskrit wasn't just linguistics, but it was an immersion into a world of
               literature, philosophy and rigid grammatical logic. This background helped me
@@ -54,7 +54,7 @@ export default function About() {
               must be a field where I can combine my problem solving skills and creativity, and I
               came across HCI — which seemed a perfect fit for me.
             </p>
-            <p className="text-lg text-cream-text sm:text-[28px]">
+            <p className="max-w-[760px] text-base text-cream-text sm:text-xl">
               After my undergraduate studies I dedicated a year to learn fundamentals of UI/UX
               and did a specialized Diploma in UI/UX. This path led me to work at two valuable
               internships, where I got a chance to apply my problem solving skills to the real
@@ -66,7 +66,7 @@ export default function About() {
         <section className="mt-16 sm:mt-20">
           <SectionHeading>My goals</SectionHeading>
           <div className="mt-8 rounded-xl border border-paper-border bg-navy px-8 py-8 sm:mt-10 sm:px-10 sm:py-9">
-            <p className="text-lg text-cream-text sm:text-[28px]">
+            <p className="max-w-[760px] text-base text-cream-text sm:text-xl">
               I am currently pursuing a master's degree in Human-Computer Interaction at Drexel
               University. I aspire to gain more experience in UX design and product design. My
               goal is to eventually move to managerial and leadership roles, where I can lead my
@@ -83,7 +83,7 @@ export default function About() {
                 {row.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border border-gold/30 bg-navy px-6 py-3 text-lg text-gold sm:text-xl"
+                    className="rounded-full border border-gold/30 bg-navy px-6 py-3 text-base text-gold sm:text-lg"
                   >
                     {skill}
                   </span>
