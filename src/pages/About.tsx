@@ -10,6 +10,7 @@ const skillRows = [
   ["Prototyping", "Wireframing", "Interaction design"],
   ["User research", "Heuristics evaluation"],
   ["Affinity mapping", "AB testing"],
+  ["AI assisted Dev / Vibe coding"],
 ];
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
