@@ -1,29 +1,49 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import PhaseCard, { type Phase } from "../../components/case-studies/PhaseCard";
+import PhaseOverlay from "../../components/case-studies/PhaseOverlay";
+import BeforeAfterPanel from "../../components/case-studies/panels/BeforeAfterPanel";
+import HeuristicEvaluationPanel from "../../components/case-studies/panels/HeuristicEvaluationPanel";
+import DesignSystemPanel from "../../components/case-studies/panels/DesignSystemPanel";
 import backArrow from "../../assets/case-studies/sizzle/back-arrow.svg";
 
-const phases: Phase[] = [
+type PhaseId = "before-after" | "heuristic-evaluation" | "design-system";
+
+const phases: (Phase & { id: PhaseId })[] = [
   {
+    id: "before-after",
     number: "01",
     title: "Before & After",
     description:
       "Comparing the cluttered original screens to the redesigned, simplified experience",
   },
   {
+    id: "heuristic-evaluation",
     number: "02",
     title: "Heuristic Evaluation",
     description:
       "Evaluating usability issues in the original design against established heuristics",
   },
   {
+    id: "design-system",
     number: "03",
     title: "Design System",
     description: "Colors, typography, and style guide used in the redesign",
   },
 ];
 
+const panelComponents: Record<PhaseId, React.ComponentType> = {
+  "before-after": BeforeAfterPanel,
+  "heuristic-evaluation": HeuristicEvaluationPanel,
+  "design-system": DesignSystemPanel,
+};
+
 export default function IMobile() {
+  const [openPanelId, setOpenPanelId] = useState<PhaseId | null>(null);
+
+  const ActivePanel = openPanelId ? panelComponents[openPanelId] : null;
+
   return (
     <div className="paper-texture min-h-screen bg-beige">
       <Navbar tone="light" />
@@ -77,11 +97,19 @@ export default function IMobile() {
 
           <div className="mt-10 flex flex-col gap-6 sm:mt-12 sm:gap-8">
             {phases.map((phase) => (
-              <PhaseCard key={phase.number} phase={phase} />
+              <PhaseCard
+                key={phase.id}
+                phase={phase}
+                onClick={() => setOpenPanelId(phase.id)}
+              />
             ))}
           </div>
         </div>
       </div>
+
+      <PhaseOverlay isOpen={openPanelId !== null} onClose={() => setOpenPanelId(null)}>
+        {ActivePanel && <ActivePanel />}
+      </PhaseOverlay>
     </div>
   );
 }
