@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -17,20 +18,22 @@ import IMobileCaseStudy from "./pages/case-studies/IMobile";
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/work" element={<Work />} />
-      <Route path="/work/sizzle" element={<SizzleCaseStudy />} />
-      <Route path="/work/sizzle/competitor-analysis" element={<SizzleCompetitorAnalysis />} />
-      <Route path="/work/sizzle/empathize" element={<SizzleEmpathize />} />
-      <Route path="/work/sizzle/define" element={<SizzleDefine />} />
-      <Route path="/work/sizzle/ideate" element={<SizzleIdeate />} />
-      <Route path="/work/sizzle/wireframes" element={<SizzleWireframes />} />
-      <Route path="/work/sizzle/prototype" element={<SizzlePrototype />} />
-      <Route path="/work/imobile" element={<IMobileCaseStudy />} />
-      <Route path="/work/imobile/before-after" element={<IMobileBeforeAfter />} />
-      <Route path="/work/:slug" element={<CaseStudy />} />
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/work" element={<Work />} />
+        <Route path="/work/sizzle" element={<SizzleCaseStudy />} />
+        <Route path="/work/sizzle/competitor-analysis" element={<SizzleCompetitorAnalysis />} />
+        <Route path="/work/sizzle/empathize" element={<SizzleEmpathize />} />
+        <Route path="/work/sizzle/define" element={<SizzleDefine />} />
+        <Route path="/work/sizzle/ideate" element={<SizzleIdeate />} />
+        <Route path="/work/sizzle/wireframes" element={<SizzleWireframes />} />
+        <Route path="/work/sizzle/prototype" element={<SizzlePrototype />} />
+        <Route path="/work/imobile" element={<IMobileCaseStudy />} />
+        <Route path="/work/imobile/before-after" element={<IMobileBeforeAfter />} />
+        <Route path="/work/:slug" element={<CaseStudy />} />
+      </Route>
     </Routes>
   );
 }
