@@ -4,11 +4,16 @@ import { Link, type LinkProps } from "react-router-dom";
 type Variant = "primary" | "secondary";
 
 const base =
-  "inline-flex items-center justify-center rounded-full px-6 py-2.5 font-['Instrument_Sans'] font-medium text-base tracking-wide uppercase select-none origin-bottom transition-[filter,transform] duration-100 ease-out hover:scale-y-90 active:scale-y-80";
+  "inline-flex items-center justify-center rounded-full px-6 py-2.5 font-['Instrument_Sans'] font-medium text-base tracking-wide uppercase select-none";
 
 const variantStyles: Record<Variant, string> = {
-  primary: "bg-gold text-navy hover:brightness-110",
-  secondary: "bg-transparent text-gold border border-gold",
+  primary:
+    "bg-gold text-navy origin-bottom transition-[filter,transform] duration-100 ease-out hover:brightness-110 hover:scale-y-90 active:scale-y-80",
+  // Outline "thickness" is simulated with an inset box-shadow rather than the
+  // border property, so growing it on hover/active never changes the button's
+  // layout size — only border/box-shadow would otherwise add to the box.
+  secondary:
+    "bg-transparent text-gold shadow-[inset_0_0_0_1px_#e0c68f] transition-shadow duration-120 ease-out hover:shadow-[inset_0_0_0_2px_#e0c68f] active:shadow-[inset_0_0_0_3px_#e0c68f]",
 };
 
 type CommonProps = {
