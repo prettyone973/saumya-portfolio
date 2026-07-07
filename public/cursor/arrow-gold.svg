@@ -1,14 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28">
   <defs>
-    <linearGradient id="goldMetal" x1="10%" y1="0%" x2="95%" y2="100%">
-      <stop offset="0%" stop-color="#fff8e3" />
-      <stop offset="14%" stop-color="#f5deA0" />
-      <stop offset="32%" stop-color="#d9ad5c" />
-      <stop offset="50%" stop-color="#a3702c" />
-      <stop offset="64%" stop-color="#7c4f1d" />
-      <stop offset="80%" stop-color="#c99a4c" />
-      <stop offset="92%" stop-color="#f2da9c" />
-      <stop offset="100%" stop-color="#fff8e3" />
+    <linearGradient id="goldBase" x1="5%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#fff6d6" />
+      <stop offset="16%" stop-color="#ffe19a" />
+      <stop offset="34%" stop-color="#e6ab4a" />
+      <stop offset="50%" stop-color="#b87a24" />
+      <stop offset="66%" stop-color="#8a5518" />
+      <stop offset="80%" stop-color="#d19f52" />
+      <stop offset="92%" stop-color="#f7dea0" />
+      <stop offset="100%" stop-color="#fff3d4" />
+    </linearGradient>
+    <linearGradient id="facetSplit" x1="0%" y1="0%" x2="100%" y2="88%">
+      <stop offset="0%" stop-color="#fffbea" stop-opacity="0.7" />
+      <stop offset="44%" stop-color="#fff3d0" stop-opacity="0.25" />
+      <stop offset="53%" stop-color="#5b3c12" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#3c260a" stop-opacity="0.55" />
     </linearGradient>
     <linearGradient id="specular" x1="0%" y1="0%" x2="70%" y2="80%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
@@ -22,20 +28,43 @@
       <feGaussianBlur stdDeviation="0.9" />
     </filter>
   </defs>
+
   <path
     d="M2 2 L2 22.7 L7.7 18.3 L10.7 25.2 L14 23.7 L11 16.8 L18 16.8 Z"
-    fill="url(#goldMetal)"
-    stroke="rgba(38,24,7,0.6)"
-    stroke-width="1.1"
+    fill="url(#goldBase)"
+    stroke="rgba(32,18,4,0.68)"
+    stroke-width="1.15"
     stroke-linejoin="round"
   />
-  <g clip-path="url(#arrowClip)">
-    <ellipse cx="5.6" cy="6.4" rx="5.4" ry="9.5" fill="url(#specular)" filter="url(#softBlur)" transform="rotate(-28 5.6 6.4)" />
-  </g>
+
   <path
-    d="M3.3 4.1 L3.3 15.6"
-    stroke="#fffdf3"
+    d="M2 2 L2 22.7 L7.7 18.3 L10.7 25.2 L14 23.7 L11 16.8 L18 16.8 Z"
+    fill="url(#facetSplit)"
+    style="mix-blend-mode:overlay"
+  />
+
+  <g clip-path="url(#arrowClip)">
+    <ellipse cx="5.4" cy="6.2" rx="5.8" ry="10" fill="url(#specular)" filter="url(#softBlur)" transform="rotate(-28 5.4 6.2)" />
+  </g>
+
+  <path
+    d="M11.4 17.3 L13.6 23.1"
+    stroke="rgba(40,22,4,0.45)"
     stroke-width="0.9"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M3.1 3.6 L3.1 16.4"
+    stroke="#fffdf5"
+    stroke-width="1.3"
+    stroke-linecap="round"
+    opacity="0.75"
+  />
+  <path
+    d="M2.7 2.9 L6.4 6.3"
+    stroke="#fffdf5"
+    stroke-width="1"
     stroke-linecap="round"
     opacity="0.5"
   />

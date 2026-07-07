@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import SparkleTrail, { type SparklePoint } from "./SparkleTrail";
+import CardShineSweep from "./CardShineSweep";
 
 export type ProjectTag = {
   icon: string;
@@ -50,8 +51,16 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
   const [sparkles, setSparkles] = useState<SparklePoint[]>([]);
   const lastSparkleAt = useRef(0);
   const sparkleId = useRef(0);
+  // 0 = never hovered yet, so the shine sweep doesn't play on initial mount.
+  // Bumped on every hover-in so the sweep remounts (and replays) once per hover.
+  const [sweepKey, setSweepKey] = useState(0);
 
   const scale = emphasis === "hovered" ? 1.05 : emphasis === "dimmed" ? 0.97 : 1;
+
+  function handleMouseEnter() {
+    setSweepKey((k) => k + 1);
+    onHoverStart();
+  }
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const el = outerRef.current;
@@ -96,7 +105,7 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
     >
       <Link to={project.href} className="block">
         <motion.div
-          onMouseEnter={onHoverStart}
+          onMouseEnter={handleMouseEnter}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           animate={{
@@ -109,16 +118,16 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
                 : "0 4px 18px -4px rgba(46,42,31,0.1)",
           }}
           transition={{ duration: 0.22, ease: "easeOut" }}
-          className="paper-texture relative aspect-[766/448] w-full overflow-hidden rounded-3xl border border-paper-border bg-paper"
+          className="paper-texture relative w-full overflow-hidden rounded-3xl border border-paper-border bg-paper"
           style={{ transformStyle: "preserve-3d" }}
         >
-          <div className="flex h-full items-center gap-6 overflow-hidden p-8 sm:gap-10 sm:p-10">
+          <div className="flex items-center gap-6 p-8 sm:gap-10 sm:p-10">
             <img
               src={project.mockup}
               alt=""
-              className="h-full w-28 shrink-0 object-contain sm:w-32"
+              className="h-60 w-28 shrink-0 object-contain sm:h-72 sm:w-32"
             />
-            <div className="flex h-full min-w-0 flex-1 flex-col items-start justify-start gap-3 overflow-hidden">
+            <div className="flex min-w-0 flex-1 flex-col items-start justify-start gap-3">
               <div className="flex flex-col items-start gap-3">
                 <span className="rounded-full bg-navy px-3 py-1.5 text-sm font-medium text-gold whitespace-nowrap">
                   {project.badge}
@@ -127,7 +136,7 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
                   {project.title}
                 </h3>
               </div>
-              <p className="line-clamp-2 text-sm text-ink sm:text-base">{project.description}</p>
+              <p className="text-sm text-ink sm:text-base">{project.description}</p>
               <div className="flex flex-col items-start gap-2">
                 {project.tagRows.map((row, i) => (
                   <div key={i} className="flex flex-wrap items-center gap-8">
@@ -150,6 +159,7 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
           </div>
         </motion.div>
       </Link>
+      {sweepKey > 0 && <CardShineSweep key={sweepKey} />}
       <SparkleTrail sparkles={sparkles} />
     </motion.div>
   );
