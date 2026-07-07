@@ -112,7 +112,7 @@ export default function About() {
                 {row.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border border-gold/30 bg-navy px-6 py-3 text-base text-gold transition-all duration-150 ease-out hover:scale-105 hover:border-gold/70 hover:bg-gold/10 sm:text-lg"
+                    className="rounded-full border border-gold/30 bg-navy px-6 py-3 text-base text-gold sm:text-lg"
                   >
                     {skill}
                   </span>

@@ -8,7 +8,7 @@ export default function CardShineSweep() {
       <motion.div
         aria-hidden
         initial={{ y: "-130%", opacity: 0 }}
-        animate={{ y: "230%", opacity: [0, 0.22, 0] }}
+        animate={{ y: "230%", opacity: [0, 1, 0] }}
         transition={{ duration: 0.55, ease: "easeInOut", times: [0, 0.5, 1] }}
         style={{
           position: "absolute",
@@ -18,7 +18,7 @@ export default function CardShineSweep() {
           height: "55%",
           rotate: -12,
           background:
-            "linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.2) 42%, rgba(255,255,255,0.32) 50%, rgba(255,255,255,0.2) 58%, transparent 100%)",
+            "linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.28) 42%, rgba(255,255,255,0.42) 50%, rgba(255,255,255,0.28) 58%, transparent 100%)",
         }}
       />
     </div>
