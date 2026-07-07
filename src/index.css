@@ -38,6 +38,10 @@
 html,
 body {
   cursor: url("/cursor/arrow-gold.svg") 3 2, auto;
+  /* Safety net: no layout should force horizontal scroll, but this
+     guards against any stray overflow rather than relying on every
+     component getting its own containment right. */
+  overflow-x: hidden;
 }
 
 a,

@@ -18,20 +18,20 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
     <nav
       className={`w-full border-b ${tone === "dark" ? "border-white/10" : "border-navy/10"}`}
     >
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-6 pb-6 pt-6 sm:px-10 lg:px-16 xl:px-20">
-        <div className="flex items-center gap-3">
-          <span className={`font-display text-2xl ${nameText}`}>Saumya Mehta</span>
-          <img src={dot} alt="" className="size-5" />
-          <span className={`font-display text-2xl ${nameText}`}>Product Designer</span>
+      <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-x-6 gap-y-3 px-6 pb-6 pt-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          <span className={`font-display text-lg sm:text-2xl ${nameText}`}>Saumya Mehta</span>
+          <img src={dot} alt="" className="size-4 sm:size-5" />
+          <span className={`font-display text-lg sm:text-2xl ${nameText}`}>Product Designer</span>
         </div>
-        <div className="flex items-center gap-9">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-x-6 lg:gap-x-9">
           {navLinks.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
               end={link.to === "/"}
               className={({ isActive }) =>
-                `border-b-[2.5px] px-2 py-2 text-xl font-normal tracking-wide transition-colors duration-150 ${
+                `border-b-[2.5px] px-2 py-2 text-base font-normal tracking-wide transition-colors duration-150 sm:text-lg lg:text-xl ${
                   isActive ? activeText : `border-transparent ${mutedText} ${hoverBorder}`
                 }`
               }
