@@ -27,17 +27,17 @@ export default function About() {
       <Navbar tone="dark" />
       <div className="mx-auto max-w-[1280px] px-6 py-16 sm:px-10 lg:px-16 xl:px-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+          <img
+            src={aboutPortrait}
+            alt="Saumya Mehta"
+            className="aspect-square w-full max-w-[447px] shrink-0 rounded-2xl object-cover"
+          />
           <div className="flex max-w-[680px] flex-col gap-6">
             <h1 className="font-display text-[40px] text-cream-text sm:text-[52px]">About Me</h1>
             <p className="max-w-[600px] text-lg text-gold-muted sm:text-xl">
               Product designer with an interdisciplinary, research-driven approach to design.
             </p>
           </div>
-          <img
-            src={aboutPortrait}
-            alt="Saumya Mehta"
-            className="aspect-square w-full max-w-[447px] shrink-0 rounded-2xl object-cover"
-          />
         </div>
 
         <section className="mt-20 sm:mt-28">
@@ -65,8 +65,8 @@ export default function About() {
 
         <section className="mt-16 sm:mt-20">
           <SectionHeading>My goals</SectionHeading>
-          <div className="mt-8 rounded-xl border border-paper-border bg-navy px-8 py-8 sm:mt-10 sm:px-10 sm:py-9">
-            <p className="max-w-[760px] text-base text-cream-text sm:text-xl">
+          <div className="mt-8 sm:mt-10">
+            <p className="max-w-[720px] text-base text-cream-text sm:text-xl">
               I am currently pursuing a master's degree in Human-Computer Interaction at Drexel
               University. I aspire to gain more experience in UX design and product design. My
               goal is to eventually move to managerial and leadership roles, where I can lead my
