@@ -19,6 +19,20 @@
 
   --font-display: "Source Serif 4", Georgia, serif;
   --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Type scale nudged up ~9% site-wide; line-heights stay proportional
+     since Tailwind's default ratios are unitless multipliers of font-size. */
+  --text-xs: 0.8175rem;
+  --text-sm: 0.9538rem;
+  --text-base: 1.09rem;
+  --text-lg: 1.2263rem;
+  --text-xl: 1.3625rem;
+  --text-2xl: 1.635rem;
+  --text-3xl: 2.0438rem;
+  --text-4xl: 2.4525rem;
+  --text-5xl: 3.27rem;
+  --text-6xl: 4.0875rem;
+  --text-7xl: 4.905rem;
 }
 
 html,

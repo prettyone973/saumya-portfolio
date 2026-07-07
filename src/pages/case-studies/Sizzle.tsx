@@ -83,9 +83,9 @@ export default function Sizzle() {
           <Link to="/work" aria-label="Back to my work" className="shrink-0 transition-opacity hover:opacity-70">
             <img src={backArrow} alt="" className="h-6 w-9 sm:h-9 sm:w-14" />
           </Link>
-          <h1 className="font-display text-2xl text-navy sm:text-[32px]">Sizzle- a cooking buddy</h1>
+          <h1 className="font-display text-2xl text-navy sm:text-[35px]">Sizzle- a cooking buddy</h1>
         </div>
-        <h2 className="mt-8 font-['Instrument_Sans'] text-[28px] font-medium text-ink sm:text-[38px]">
+        <h2 className="mt-8 font-['Instrument_Sans'] text-[31px] font-medium text-ink sm:text-[41px]">
           Project Overview
         </h2>
 
@@ -134,7 +134,7 @@ export default function Sizzle() {
         </div>
 
         <div className="mt-20 sm:mt-28">
-          <h2 className="font-['Instrument_Sans'] text-[28px] font-medium text-ink sm:text-[38px]">
+          <h2 className="font-['Instrument_Sans'] text-[31px] font-medium text-ink sm:text-[41px]">
             How I got there
           </h2>
           <div className="mt-4 flex flex-col gap-3 text-clay sm:mt-6">

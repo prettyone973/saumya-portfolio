@@ -6,7 +6,7 @@ import row3 from "../../../assets/case-studies/sizzle/wireframes-row-3.png";
 export default function WireframesPanel() {
   return (
     <div>
-      <h2 className="mb-6 font-['Instrument_Sans'] text-xl font-bold text-navy sm:mb-8 sm:text-[30px]">
+      <h2 className="mb-6 font-['Instrument_Sans'] text-xl font-bold text-navy sm:mb-8 sm:text-[33px]">
         Wireframes
       </h2>
 

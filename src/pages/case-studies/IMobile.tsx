@@ -65,9 +65,9 @@ export default function IMobile() {
           >
             <img src={backArrow} alt="" className="h-6 w-9 sm:h-9 sm:w-14" />
           </Link>
-          <h1 className="font-display text-2xl text-navy sm:text-[32px]">iMobile App Redesign</h1>
+          <h1 className="font-display text-2xl text-navy sm:text-[35px]">iMobile App Redesign</h1>
         </div>
-        <h2 className="mt-8 font-['Instrument_Sans'] text-[28px] font-medium text-ink sm:text-[38px]">
+        <h2 className="mt-8 font-['Instrument_Sans'] text-[31px] font-medium text-ink sm:text-[41px]">
           Project Overview
         </h2>
 
@@ -99,7 +99,7 @@ export default function IMobile() {
         </div>
 
         <div className="mt-20 sm:mt-28">
-          <h2 className="font-['Instrument_Sans'] text-[28px] font-medium text-ink sm:text-[38px]">
+          <h2 className="font-['Instrument_Sans'] text-[31px] font-medium text-ink sm:text-[41px]">
             How I got there
           </h2>
 

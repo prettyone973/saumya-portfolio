@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
+import SparkleTrail, { type SparklePoint } from "./SparkleTrail";
 
 export type ProjectTag = {
   icon: string;
@@ -36,31 +37,65 @@ type Props = {
 
 const TILT_RANGE = 5;
 
+const SPARKLE_MIN_INTERVAL = 75;
+const SPARKLE_LIFETIME = 550;
+
 export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEnd }: Props) {
-  const ref = useRef<HTMLDivElement>(null);
+  // Measured from the untransformed perspective wrapper, not the tilted card
+  // itself — reading rect off a 3D-rotated element returns its post-transform
+  // (visually skewed) box, which drifts away from the pre-transform coordinate
+  // space that absolutely-positioned children (sparkles) are placed in.
+  const outerRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
+  const [sparkles, setSparkles] = useState<SparklePoint[]>([]);
+  const lastSparkleAt = useRef(0);
+  const sparkleId = useRef(0);
 
   const scale = emphasis === "hovered" ? 1.05 : emphasis === "dimmed" ? 0.97 : 1;
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    const el = ref.current;
+    const el = outerRef.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
     const px = (e.clientX - rect.left) / rect.width - 0.5;
     const py = (e.clientY - rect.top) / rect.height - 0.5;
     setTilt({ rotateX: -py * TILT_RANGE, rotateY: px * TILT_RANGE });
+
+    const now = performance.now();
+    if (now - lastSparkleAt.current > SPARKLE_MIN_INTERVAL) {
+      lastSparkleAt.current = now;
+      const id = sparkleId.current++;
+      setSparkles((prev) => [
+        ...prev.slice(-5),
+        {
+          id,
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+          size: 6 + Math.random() * 5,
+          rotate: Math.random() * 60 - 30,
+        },
+      ]);
+      setTimeout(() => {
+        setSparkles((prev) => prev.filter((s) => s.id !== id));
+      }, SPARKLE_LIFETIME);
+    }
   }
 
   function handleMouseLeave() {
     setTilt({ rotateX: 0, rotateY: 0 });
+    setSparkles([]);
     onHoverEnd();
   }
 
   return (
-    <motion.div variants={cardVariants} style={{ perspective: 1000 }}>
+    <motion.div
+      ref={outerRef}
+      variants={cardVariants}
+      className="relative"
+      style={{ perspective: 1000 }}
+    >
       <Link to={project.href} className="block">
         <motion.div
-          ref={ref}
           onMouseEnter={onHoverStart}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
@@ -115,6 +150,7 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
           </div>
         </motion.div>
       </Link>
+      <SparkleTrail sparkles={sparkles} />
     </motion.div>
   );
 }

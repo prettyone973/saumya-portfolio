@@ -33,7 +33,7 @@ export default function DefinePanel() {
     <div>
       <div className="flex items-start justify-between gap-6">
         <div className="flex flex-col gap-3">
-          <h2 className="font-['Instrument_Sans'] text-xl font-semibold text-clay sm:text-[30px]">
+          <h2 className="font-['Instrument_Sans'] text-xl font-semibold text-clay sm:text-[33px]">
             Defining the Problem Space
           </h2>
           <p className="max-w-[760px] text-base text-clay sm:text-xl">
@@ -48,7 +48,7 @@ export default function DefinePanel() {
         />
       </div>
 
-      <h2 className="mt-8 font-['Instrument_Sans'] text-xl font-semibold text-clay sm:mt-10 sm:text-[30px]">
+      <h2 className="mt-8 font-['Instrument_Sans'] text-xl font-semibold text-clay sm:mt-10 sm:text-[33px]">
         Research Findings
       </h2>
 

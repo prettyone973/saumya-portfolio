@@ -13,7 +13,7 @@ export default function CaseStudy() {
         <Link to="/work" className="text-sm font-medium text-clay">
           ← Back to work
         </Link>
-        <h1 className="mt-6 font-display text-[28px] text-navy sm:text-[38px]">
+        <h1 className="mt-6 font-display text-[31px] text-navy sm:text-[41px]">
           {project ? project.title : "Case study not found"}
         </h1>
         <p className="mt-6 max-w-[760px] text-base text-ink sm:text-lg">

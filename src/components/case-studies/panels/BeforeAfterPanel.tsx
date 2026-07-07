@@ -52,7 +52,7 @@ const afterGroups: { src: string; callouts?: string[] }[][] = [
 export default function BeforeAfterPanel() {
   return (
     <div>
-      <h2 className="mb-6 font-['Instrument_Sans'] text-xl font-bold text-navy sm:mb-8 sm:text-[30px]">
+      <h2 className="mb-6 font-['Instrument_Sans'] text-xl font-bold text-navy sm:mb-8 sm:text-[33px]">
         Before &amp; After
       </h2>
 

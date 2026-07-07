@@ -1,17 +1,19 @@
 import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 import ProjectsGrid from "../components/ProjectsGrid";
+import ShineSweep from "../components/ShineSweep";
 import { projects } from "../data/projects";
 import heroPortrait from "../assets/images/hero-portrait.png";
 
 export default function Home() {
   return (
     <div>
-      <section className="bg-navy-deep">
+      <section className="relative overflow-hidden bg-navy-deep">
+        <ShineSweep />
         <Navbar tone="dark" />
         <div className="mx-auto flex max-w-[1280px] flex-col gap-10 px-6 py-16 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-16 xl:px-20">
           <div className="flex max-w-[680px] flex-col gap-6">
-            <h1 className="font-display text-[40px] leading-[1.08] text-cream-text sm:text-[52px] lg:text-[74px]">
+            <h1 className="font-display text-[44px] leading-[1.08] text-cream-text sm:text-[57px] lg:text-[81px]">
               Designs that <em className="font-display italic text-gold">actually work.</em>
             </h1>
             <p className="max-w-[600px] text-lg text-gold-muted sm:text-xl">
@@ -37,7 +39,7 @@ export default function Home() {
 
       <section className="paper-texture bg-beige px-6 py-16 sm:px-10 lg:px-16 xl:px-20">
         <div className="mx-auto max-w-[1280px]">
-          <h2 className="mb-14 font-['Instrument_Sans'] text-[28px] font-semibold text-navy sm:text-[38px]">
+          <h2 className="mb-14 font-['Instrument_Sans'] text-[31px] font-semibold text-navy sm:text-[41px]">
             My projects
           </h2>
           <ProjectsGrid projects={projects} />

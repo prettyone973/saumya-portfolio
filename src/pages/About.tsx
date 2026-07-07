@@ -1,4 +1,6 @@
+import { motion, type Variants } from "framer-motion";
 import Navbar from "../components/Navbar";
+import TiltImage from "../components/TiltImage";
 import aboutPortrait from "../assets/images/about-portrait.jpg";
 import sketchCarLegs from "../assets/images/sketch-car-legs.jpg";
 import sketchRose from "../assets/images/sketch-rose.jpg";
@@ -13,9 +15,18 @@ const skillRows = [
   ["AI assisted Dev / Vibe coding"],
 ];
 
+const sectionVariants: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.35, ease: "easeOut" },
+  },
+};
+
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="font-['Instrument_Sans'] text-[28px] font-semibold text-gold sm:text-[38px]">
+    <h2 className="font-['Instrument_Sans'] text-[31px] font-semibold text-gold sm:text-[41px]">
       {children}
     </h2>
   );
@@ -30,17 +41,23 @@ export default function About() {
           <img
             src={aboutPortrait}
             alt="Saumya Mehta"
-            className="aspect-square w-full max-w-[447px] shrink-0 rounded-2xl object-cover"
+            className="aspect-square w-full max-w-[447px] shrink-0 rounded-2xl object-cover transition-transform duration-200 ease-out hover:scale-[1.02]"
           />
           <div className="flex max-w-[680px] flex-col gap-6">
-            <h1 className="font-display text-[40px] text-cream-text sm:text-[52px]">About Me</h1>
+            <h1 className="font-display text-[44px] text-cream-text sm:text-[57px]">About Me</h1>
             <p className="max-w-[600px] text-lg text-gold-muted sm:text-xl">
               Product designer with an interdisciplinary, research-driven approach to design.
             </p>
           </div>
         </div>
 
-        <section className="mt-20 sm:mt-28">
+        <motion.section
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          className="mt-20 sm:mt-28"
+        >
           <SectionHeading>My journey</SectionHeading>
           <div className="mt-8 flex flex-col gap-6 sm:mt-10">
             <p className="max-w-[720px] text-base text-cream-text sm:text-xl">
@@ -61,9 +78,15 @@ export default function About() {
               world.
             </p>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="mt-16 sm:mt-20">
+        <motion.section
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          className="mt-16 sm:mt-20"
+        >
           <SectionHeading>My goals</SectionHeading>
           <div className="mt-8 sm:mt-10">
             <p className="max-w-[720px] text-base text-cream-text sm:text-xl">
@@ -73,9 +96,15 @@ export default function About() {
               team to design human-centred and sustainable solutions.
             </p>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="mt-16 sm:mt-20">
+        <motion.section
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          className="mt-16 sm:mt-20"
+        >
           <SectionHeading>Skills</SectionHeading>
           <div className="mt-8 flex flex-col gap-4 sm:mt-10">
             {skillRows.map((row, i) => (
@@ -83,7 +112,7 @@ export default function About() {
                 {row.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border border-gold/30 bg-navy px-6 py-3 text-base text-gold sm:text-lg"
+                    className="rounded-full border border-gold/30 bg-navy px-6 py-3 text-base text-gold transition-all duration-150 ease-out hover:scale-105 hover:border-gold/70 hover:bg-gold/10 sm:text-lg"
                   >
                     {skill}
                   </span>
@@ -91,21 +120,27 @@ export default function About() {
               </div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
-        <section className="mt-16 sm:mt-20">
+        <motion.section
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          className="mt-16 sm:mt-20"
+        >
           <SectionHeading>My hobbies: Sketching, reading, hiking, travelling</SectionHeading>
           <div className="mt-8 flex flex-wrap gap-6 sm:mt-10 sm:gap-8">
             {hobbyArtworks.map((src, i) => (
-              <img
+              <TiltImage
                 key={i}
                 src={src}
                 alt=""
-                className="aspect-[4/5] w-full max-w-[280px] flex-1 rounded-2xl border border-paper-border object-cover transition-transform duration-150 ease-out hover:scale-[1.03] sm:max-w-[320px]"
+                className="aspect-[4/5] w-full max-w-[280px] flex-1 sm:max-w-[320px]"
               />
             ))}
           </div>
-        </section>
+        </motion.section>
       </div>
     </div>
   );

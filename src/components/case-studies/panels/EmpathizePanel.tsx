@@ -24,7 +24,7 @@ export default function EmpathizePanel() {
     <div>
       <div className="flex items-start justify-between gap-6">
         <div className="flex flex-col gap-3">
-          <h2 className="font-['Instrument_Sans'] text-xl font-semibold text-clay sm:text-[30px]">
+          <h2 className="font-['Instrument_Sans'] text-xl font-semibold text-clay sm:text-[33px]">
             Understanding the User
           </h2>
           <p className="max-w-[760px] text-base text-clay sm:text-xl">

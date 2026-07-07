@@ -29,7 +29,7 @@ export default function PhaseCard({
           interactive ? "group-hover:shadow-[0_8px_24px_-8px_rgba(46,42,31,0.18)]" : ""
         }`}
       >
-        <span className="font-['Instrument_Sans'] text-2xl font-medium text-ink sm:text-[30px]">
+        <span className="font-['Instrument_Sans'] text-2xl font-medium text-ink sm:text-[33px]">
           {phase.number}
         </span>
       </div>

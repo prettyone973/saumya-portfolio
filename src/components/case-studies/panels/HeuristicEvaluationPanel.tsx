@@ -149,7 +149,7 @@ function SeverityBadge({ value }: { value: number }) {
 export default function HeuristicEvaluationPanel() {
   return (
     <div>
-      <h2 className="font-['Instrument_Sans'] text-xl font-bold text-navy sm:text-[30px]">
+      <h2 className="font-['Instrument_Sans'] text-xl font-bold text-navy sm:text-[33px]">
         Heuristic Evaluation
       </h2>
       <p className="mt-2 text-sm text-clay sm:text-base">

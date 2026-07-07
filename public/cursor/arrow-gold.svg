@@ -1,25 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28">
   <defs>
-    <linearGradient id="goldFill" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fdf3d9" />
-      <stop offset="28%" stop-color="#eccf93" />
-      <stop offset="55%" stop-color="#cd9c4e" />
-      <stop offset="80%" stop-color="#a2732a" />
-      <stop offset="100%" stop-color="#6e4b18" />
+    <linearGradient id="goldMetal" x1="10%" y1="0%" x2="95%" y2="100%">
+      <stop offset="0%" stop-color="#fff8e3" />
+      <stop offset="14%" stop-color="#f5deA0" />
+      <stop offset="32%" stop-color="#d9ad5c" />
+      <stop offset="50%" stop-color="#a3702c" />
+      <stop offset="64%" stop-color="#7c4f1d" />
+      <stop offset="80%" stop-color="#c99a4c" />
+      <stop offset="92%" stop-color="#f2da9c" />
+      <stop offset="100%" stop-color="#fff8e3" />
     </linearGradient>
+    <linearGradient id="specular" x1="0%" y1="0%" x2="70%" y2="80%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <clipPath id="arrowClip">
+      <path d="M2 2 L2 22.7 L7.7 18.3 L10.7 25.2 L14 23.7 L11 16.8 L18 16.8 Z" />
+    </clipPath>
+    <filter id="softBlur" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="0.9" />
+    </filter>
   </defs>
   <path
     d="M2 2 L2 22.7 L7.7 18.3 L10.7 25.2 L14 23.7 L11 16.8 L18 16.8 Z"
-    fill="url(#goldFill)"
-    stroke="rgba(45,31,10,0.55)"
+    fill="url(#goldMetal)"
+    stroke="rgba(38,24,7,0.6)"
     stroke-width="1.1"
     stroke-linejoin="round"
   />
+  <g clip-path="url(#arrowClip)">
+    <ellipse cx="5.6" cy="6.4" rx="5.4" ry="9.5" fill="url(#specular)" filter="url(#softBlur)" transform="rotate(-28 5.6 6.4)" />
+  </g>
   <path
-    d="M3.4 4.2 L3.4 15.8"
-    stroke="#fffaf0"
-    stroke-width="1"
+    d="M3.3 4.1 L3.3 15.6"
+    stroke="#fffdf3"
+    stroke-width="0.9"
     stroke-linecap="round"
-    opacity="0.45"
+    opacity="0.5"
   />
 </svg>

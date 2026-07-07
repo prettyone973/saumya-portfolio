@@ -69,7 +69,7 @@ export default function Contact() {
     <div className="paper-texture min-h-screen bg-beige">
       <Navbar tone="light" />
       <div className="mx-auto max-w-[1280px] px-6 py-16 sm:px-10 lg:px-16 xl:px-20">
-        <h1 className="font-['Instrument_Sans'] text-[28px] font-semibold text-navy sm:text-[38px]">
+        <h1 className="font-['Instrument_Sans'] text-[31px] font-semibold text-navy sm:text-[41px]">
           Get in touch
         </h1>
         <p className="mt-4 max-w-[600px] text-base text-ink sm:text-lg">
