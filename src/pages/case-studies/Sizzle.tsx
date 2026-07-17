@@ -2,81 +2,37 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import CartIllustration from "../../components/case-studies/CartIllustration";
-import PhaseCard, { type Phase } from "../../components/case-studies/PhaseCard";
+import PhaseCard from "../../components/case-studies/PhaseCard";
 import PhaseOverlay from "../../components/case-studies/PhaseOverlay";
+import JumpNav from "../../components/case-studies/JumpNav";
 import CompetitorAnalysisPanel from "../../components/case-studies/panels/CompetitorAnalysisPanel";
 import EmpathizePanel from "../../components/case-studies/panels/EmpathizePanel";
 import DefinePanel from "../../components/case-studies/panels/DefinePanel";
 import IdeatePanel from "../../components/case-studies/panels/IdeatePanel";
+import UserFlowPanel from "../../components/case-studies/panels/UserFlowPanel";
 import WireframesPanel from "../../components/case-studies/panels/WireframesPanel";
 import PrototypePanel from "../../components/case-studies/panels/PrototypePanel";
 import backArrow from "../../assets/case-studies/sizzle/back-arrow.svg";
 import onlineGroceries from "../../assets/case-studies/sizzle/online-groceries.svg";
 
-type PhaseId =
-  | "competitor-analysis"
-  | "empathize"
-  | "define"
-  | "ideate"
-  | "wireframes"
-  | "prototype";
+type OverlayId = "sitemap" | "user-flow" | "wireframes" | "prototype";
 
-const phases: (Phase & { id: PhaseId })[] = [
-  {
-    id: "competitor-analysis",
-    number: "01",
-    title: "Competitor analysis",
-    description: "Yummly, Paprika, and Instagram benchmarked across usability and features",
-  },
-  {
-    id: "empathize",
-    number: "02",
-    title: "Empathize",
-    description: "User surveys, stakeholder interviews, and in-person user interviews",
-  },
-  {
-    id: "define",
-    number: "03",
-    title: "Define",
-    description: "User personas, empathy maps, problem statement, and user journey mapping",
-  },
-  {
-    id: "ideate",
-    number: "04",
-    title: "Ideate",
-    description: "Information architecture, user flows, and feature prioritization",
-  },
-  {
-    id: "wireframes",
-    number: "05",
-    title: "Wireframes",
-    description: "Low-fidelity wireframes across all key screens and user flows",
-  },
-  {
-    id: "prototype",
-    number: "06",
-    title: "Prototype",
-    description: "An interactive walkthrough of the final high-fidelity prototype",
-  },
-];
-
-const panelComponents: Record<PhaseId, React.ComponentType> = {
-  "competitor-analysis": CompetitorAnalysisPanel,
-  empathize: EmpathizePanel,
-  define: DefinePanel,
-  ideate: IdeatePanel,
+const panelComponents: Record<OverlayId, React.ComponentType> = {
+  sitemap: IdeatePanel,
+  "user-flow": UserFlowPanel,
   wireframes: WireframesPanel,
   prototype: PrototypePanel,
 };
 
 export default function Sizzle() {
-  const [openPanelId, setOpenPanelId] = useState<PhaseId | null>(null);
+  const [openPanelId, setOpenPanelId] = useState<OverlayId | null>(null);
 
   const ActivePanel = openPanelId ? panelComponents[openPanelId] : null;
 
   return (
     <div className="paper-texture min-h-screen bg-beige">
       <Navbar tone="light" />
+      <JumpNav onOpenPrototype={() => setOpenPanelId("prototype")} />
 
       <div className="mx-auto max-w-[1280px] px-6 py-16 sm:px-10 lg:px-16 xl:px-20">
         <div className="flex items-center gap-6 sm:gap-11">
@@ -143,18 +99,103 @@ export default function Sizzle() {
             </p>
             <p className="max-w-[760px] text-base sm:text-xl">
               A human-centered design process from stakeholder interviews to low-fidelity
-              wireframes. Click each phase to explore the work.
+              wireframes. Scroll through to explore the work, or jump to a section above.
             </p>
           </div>
 
-          <div className="mt-10 flex flex-col gap-6 sm:mt-12 sm:gap-8">
-            {phases.map((phase) => (
+          <div className="mt-16 flex flex-col gap-24 sm:mt-20 sm:gap-32">
+            <section id="competitor-analysis" className="scroll-mt-20">
+              <p className="mb-4 font-['Instrument_Sans'] text-sm font-semibold text-clay sm:mb-6 sm:text-lg">
+                01
+              </p>
+              <CompetitorAnalysisPanel />
+            </section>
+
+            <section id="empathize" className="scroll-mt-20">
+              <p className="mb-4 font-['Instrument_Sans'] text-sm font-semibold text-clay sm:mb-6 sm:text-lg">
+                02
+              </p>
+              <EmpathizePanel />
+            </section>
+
+            <section id="define" className="scroll-mt-20">
+              <p className="mb-4 font-['Instrument_Sans'] text-sm font-semibold text-clay sm:mb-6 sm:text-lg">
+                03
+              </p>
+              <DefinePanel />
+            </section>
+
+            <section id="ideate" className="scroll-mt-20">
+              <p className="mb-4 font-['Instrument_Sans'] text-sm font-semibold text-clay sm:mb-6 sm:text-lg">
+                04
+              </p>
+              <h2 className="font-['Instrument_Sans'] text-xl font-semibold text-clay sm:text-[33px]">
+                Structuring the Experience
+              </h2>
+              <p className="mt-3 max-w-[760px] text-base text-clay sm:text-xl">
+                After defining user needs, I mapped out the app's information architecture and
+                core user flows to structure the experience before moving into wireframes.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-6 sm:mt-10">
+                <PhaseCard
+                  phase={{
+                    number: "A",
+                    title: "Sitemap",
+                    description: "The full information architecture, from sign-up to every core section.",
+                  }}
+                  onClick={() => setOpenPanelId("sitemap")}
+                />
+                <PhaseCard
+                  phase={{
+                    number: "B",
+                    title: "User Flow",
+                    description: "Step-by-step flow for uploading a recipe, manually or with AI assistance.",
+                  }}
+                  onClick={() => setOpenPanelId("user-flow")}
+                />
+              </div>
+            </section>
+
+            <section id="wireframes" className="scroll-mt-20">
+              <p className="mb-4 font-['Instrument_Sans'] text-sm font-semibold text-clay sm:mb-6 sm:text-lg">
+                05
+              </p>
+              <h2 className="font-['Instrument_Sans'] text-xl font-semibold text-clay sm:text-[33px]">
+                From Flows to Frames
+              </h2>
+              <p className="mt-3 max-w-[760px] text-base text-clay sm:text-xl">
+                Low-fidelity wireframes were used to quickly validate layout decisions and flow
+                logic across onboarding, the home feed, recipe detail, meal planner, pantry
+                cabinet, and both the manual and AI-assisted recipe upload paths — before
+                investing in high-fidelity design.
+              </p>
+
+              <div className="mt-8 sm:mt-10">
+                <PhaseCard
+                  phase={{
+                    number: "05",
+                    title: "Wireframes",
+                    description: "Low-fidelity wireframes across all key screens and user flows",
+                  }}
+                  onClick={() => setOpenPanelId("wireframes")}
+                />
+              </div>
+            </section>
+
+            <section id="prototype" className="scroll-mt-20">
+              <p className="mb-4 font-['Instrument_Sans'] text-sm font-semibold text-clay sm:mb-6 sm:text-lg">
+                06
+              </p>
               <PhaseCard
-                key={phase.id}
-                phase={phase}
-                onClick={() => setOpenPanelId(phase.id)}
+                phase={{
+                  number: "06",
+                  title: "Prototype",
+                  description: "An interactive walkthrough of the final high-fidelity prototype",
+                }}
+                onClick={() => setOpenPanelId("prototype")}
               />
-            ))}
+            </section>
           </div>
         </div>
       </div>

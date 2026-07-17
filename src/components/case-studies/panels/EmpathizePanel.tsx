@@ -22,7 +22,7 @@ const cards: NavyInfoCardData[] = [
 export default function EmpathizePanel() {
   return (
     <div>
-      <div className="flex items-start justify-between gap-6">
+      <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-start lg:gap-16">
         <div className="flex flex-col gap-3">
           <h2 className="font-['Instrument_Sans'] text-xl font-semibold text-clay sm:text-[33px]">
             Understanding the User
@@ -35,7 +35,7 @@ export default function EmpathizePanel() {
         <img
           src={interviewIllustration}
           alt=""
-          className="mt-2 hidden h-[85px] w-[112px] shrink-0 sm:mr-10 sm:block"
+          className="aspect-[112/85] w-full max-w-[220px] shrink-0 object-contain sm:max-w-[240px]"
         />
       </div>
 
