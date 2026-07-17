@@ -1,60 +1,30 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
-import PhaseCard, { type Phase } from "../../components/case-studies/PhaseCard";
+import PhaseCard from "../../components/case-studies/PhaseCard";
 import PhaseOverlay from "../../components/case-studies/PhaseOverlay";
-import BeforeAfterPanel from "../../components/case-studies/panels/BeforeAfterPanel";
+import JumpNav from "../../components/case-studies/JumpNav";
 import HeuristicEvaluationPanel from "../../components/case-studies/panels/HeuristicEvaluationPanel";
 import DesignSystemPanel from "../../components/case-studies/panels/DesignSystemPanel";
+import BeforeAfterPanel from "../../components/case-studies/panels/BeforeAfterPanel";
 import IMobilePrototypePanel from "../../components/case-studies/panels/IMobilePrototypePanel";
 import backArrow from "../../assets/case-studies/sizzle/back-arrow.svg";
 
-type PhaseId = "before-after" | "heuristic-evaluation" | "design-system" | "prototype";
-
-const phases: (Phase & { id: PhaseId })[] = [
-  {
-    id: "heuristic-evaluation",
-    number: "01",
-    title: "Heuristic Evaluation",
-    description:
-      "Evaluating usability issues in the original design against established heuristics",
-  },
-  {
-    id: "design-system",
-    number: "02",
-    title: "Design System",
-    description: "Colors, typography, and style guide used in the redesign",
-  },
-  {
-    id: "before-after",
-    number: "03",
-    title: "Before & After",
-    description:
-      "Comparing the cluttered original screens to the redesigned, simplified experience",
-  },
-  {
-    id: "prototype",
-    number: "04",
-    title: "Prototype",
-    description: "A linear prototype flow demonstrating onboarding and security PIN changes",
-  },
-];
-
-const panelComponents: Record<PhaseId, React.ComponentType> = {
-  "before-after": BeforeAfterPanel,
-  "heuristic-evaluation": HeuristicEvaluationPanel,
-  "design-system": DesignSystemPanel,
-  prototype: IMobilePrototypePanel,
-};
-
 export default function IMobile() {
-  const [openPanelId, setOpenPanelId] = useState<PhaseId | null>(null);
-
-  const ActivePanel = openPanelId ? panelComponents[openPanelId] : null;
+  const [prototypeOpen, setPrototypeOpen] = useState(false);
 
   return (
     <div className="paper-texture min-h-screen bg-beige">
       <Navbar tone="light" />
+      <JumpNav
+        links={[
+          { id: "heuristic-evaluation", label: "Heuristic Evaluation" },
+          { id: "design-system", label: "Design System" },
+          { id: "before-after", label: "Before & After" },
+        ]}
+        actionLabel="Prototype"
+        onAction={() => setPrototypeOpen(true)}
+      />
 
       <div className="mx-auto max-w-[1280px] px-6 py-16 sm:px-10 lg:px-16 xl:px-20">
         <div className="flex items-center gap-6 sm:gap-11">
@@ -102,21 +72,51 @@ export default function IMobile() {
           <h2 className="font-['Instrument_Sans'] text-[31px] font-medium text-ink sm:text-[41px]">
             How I got there
           </h2>
+          <p className="mt-4 max-w-[760px] text-base text-clay sm:mt-6 sm:text-xl">
+            Scroll through to explore the work, or jump to a section above.
+          </p>
 
-          <div className="mt-10 flex flex-col gap-6 sm:mt-12 sm:gap-8">
-            {phases.map((phase) => (
+          <div className="mt-14 flex flex-col gap-14 sm:mt-16 sm:gap-20">
+            <section id="heuristic-evaluation" className="scroll-mt-20">
+              <p className="mb-4 font-['Instrument_Sans'] text-sm font-semibold text-clay sm:mb-6 sm:text-lg">
+                01
+              </p>
+              <HeuristicEvaluationPanel />
+            </section>
+
+            <section id="design-system" className="scroll-mt-20">
+              <p className="mb-4 font-['Instrument_Sans'] text-sm font-semibold text-clay sm:mb-6 sm:text-lg">
+                02
+              </p>
+              <DesignSystemPanel />
+            </section>
+
+            <section id="before-after" className="scroll-mt-20">
+              <p className="mb-4 font-['Instrument_Sans'] text-sm font-semibold text-clay sm:mb-6 sm:text-lg">
+                03
+              </p>
+              <BeforeAfterPanel />
+            </section>
+
+            <section id="prototype" className="scroll-mt-20">
+              <p className="mb-4 font-['Instrument_Sans'] text-sm font-semibold text-clay sm:mb-6 sm:text-lg">
+                04
+              </p>
               <PhaseCard
-                key={phase.id}
-                phase={phase}
-                onClick={() => setOpenPanelId(phase.id)}
+                phase={{
+                  number: "04",
+                  title: "Prototype",
+                  description: "A linear prototype flow demonstrating onboarding and security PIN changes",
+                }}
+                onClick={() => setPrototypeOpen(true)}
               />
-            ))}
+            </section>
           </div>
         </div>
       </div>
 
-      <PhaseOverlay isOpen={openPanelId !== null} onClose={() => setOpenPanelId(null)}>
-        {ActivePanel && <ActivePanel />}
+      <PhaseOverlay isOpen={prototypeOpen} onClose={() => setPrototypeOpen(false)}>
+        <IMobilePrototypePanel />
       </PhaseOverlay>
     </div>
   );

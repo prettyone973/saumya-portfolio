@@ -32,7 +32,17 @@ export default function Sizzle() {
   return (
     <div className="paper-texture min-h-screen bg-beige">
       <Navbar tone="light" />
-      <JumpNav onOpenPrototype={() => setOpenPanelId("prototype")} />
+      <JumpNav
+        links={[
+          { id: "competitor-analysis", label: "Competitor Analysis" },
+          { id: "empathize", label: "Empathize" },
+          { id: "define", label: "Define" },
+          { id: "ideate", label: "Ideate" },
+          { id: "wireframes", label: "Wireframes" },
+        ]}
+        actionLabel="Prototype"
+        onAction={() => setOpenPanelId("prototype")}
+      />
 
       <div className="mx-auto max-w-[1280px] px-6 py-16 sm:px-10 lg:px-16 xl:px-20">
         <div className="flex items-center gap-6 sm:gap-11">
@@ -103,7 +113,7 @@ export default function Sizzle() {
             </p>
           </div>
 
-          <div className="mt-16 flex flex-col gap-24 sm:mt-20 sm:gap-32">
+          <div className="mt-14 flex flex-col gap-14 sm:mt-16 sm:gap-20">
             <section id="competitor-analysis" className="scroll-mt-20">
               <p className="mb-4 font-['Instrument_Sans'] text-sm font-semibold text-clay sm:mb-6 sm:text-lg">
                 01
@@ -137,7 +147,7 @@ export default function Sizzle() {
                 core user flows to structure the experience before moving into wireframes.
               </p>
 
-              <div className="mt-8 flex flex-col gap-6 sm:mt-10">
+              <div className="mt-6 flex flex-col gap-4 sm:mt-8">
                 <PhaseCard
                   phase={{
                     number: "A",
@@ -171,7 +181,7 @@ export default function Sizzle() {
                 investing in high-fidelity design.
               </p>
 
-              <div className="mt-8 sm:mt-10">
+              <div className="mt-6 sm:mt-8">
                 <PhaseCard
                   phase={{
                     number: "05",

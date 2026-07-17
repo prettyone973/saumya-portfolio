@@ -1,11 +1,63 @@
+import { useEffect, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import Navbar from "../components/Navbar";
 import TiltImage from "../components/TiltImage";
+import Button from "../components/Button";
 import aboutPortrait from "../assets/images/about-portrait.jpg";
 import sketchCarLegs from "../assets/images/sketch-car-legs.jpg";
 import sketchRose from "../assets/images/sketch-rose.jpg";
 
 const hobbyArtworks = [sketchCarLegs, sketchRose];
+
+const EMAIL = "saumyamehta252004@gmail.com";
+const LINKEDIN_URL = "https://www.linkedin.com/in/saumyamehta2000";
+
+function CopyIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="size-5" aria-hidden="true">
+      <rect
+        x="9"
+        y="9"
+        width="13"
+        height="13"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="size-5" aria-hidden="true">
+      <path
+        d="M20 6 9 17l-5-5"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg viewBox="0 0 448 512" fill="currentColor" className="size-5" aria-hidden="true">
+      <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
+    </svg>
+  );
+}
 
 const skillRows = [
   ["Figma", "Miro", "Framer"],
@@ -33,6 +85,24 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 }
 
 export default function About() {
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (window.location.hash === "#contact") {
+      document.getElementById("contact")?.scrollIntoView({ block: "start" });
+    }
+  }, []);
+
+  async function handleCopy() {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard access unavailable; no-op
+    }
+  }
+
   return (
     <div className="min-h-screen bg-navy-deep">
       <Navbar tone="dark" />
@@ -119,6 +189,45 @@ export default function About() {
                 ))}
               </div>
             ))}
+          </div>
+        </motion.section>
+
+        <motion.section
+          id="contact"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          className="scroll-mt-20 mt-16 sm:mt-20"
+        >
+          <SectionHeading>Contact Me</SectionHeading>
+          <p className="mt-4 max-w-[600px] text-base text-gold-muted sm:mt-6 sm:text-xl">
+            Have a project in mind or just want to say hi? Reach out through either of these.
+          </p>
+          <div className="mt-8 flex flex-col items-start gap-6 sm:mt-10">
+            <div className="flex items-center gap-3 rounded-full border border-gold/30 bg-navy px-6 py-3">
+              <span className="text-lg text-gold sm:text-xl">{EMAIL}</span>
+              <button
+                type="button"
+                onClick={handleCopy}
+                aria-label="Copy email address"
+                className="flex items-center justify-center rounded-full p-2 text-gold transition-[background-color,transform] duration-150 hover:bg-gold/10 active:scale-90"
+              >
+                {copied ? <CheckIcon /> : <CopyIcon />}
+              </button>
+              {copied && <span className="text-sm font-medium text-gold-muted">Copied!</span>}
+            </div>
+
+            <Button
+              variant="primary"
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="gap-3"
+            >
+              <LinkedInIcon />
+              LinkedIn
+            </Button>
           </div>
         </motion.section>
 

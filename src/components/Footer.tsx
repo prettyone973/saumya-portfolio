@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 const EMAIL = "saumyamehta252004@gmail.com";
 const LINKEDIN_URL = "https://www.linkedin.com/in/saumyamehta2000";
 
@@ -43,10 +41,10 @@ export default function Footer() {
       <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-4 px-6 py-6 text-sm sm:flex-row sm:justify-between sm:px-10 sm:py-7 lg:px-16 xl:px-20">
         <span className="text-gold-muted">© 2026 Saumya Mehta</span>
         <div className="flex items-center gap-6">
-          <Link to="/contact" className={linkClasses}>
+          <a href={`mailto:${EMAIL}`} className={linkClasses}>
             <MailIcon />
             {EMAIL}
-          </Link>
+          </a>
           <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className={linkClasses}>
             <LinkedInIcon />
             LinkedIn

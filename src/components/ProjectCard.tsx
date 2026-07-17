@@ -137,9 +137,9 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
                 </h3>
               </div>
               <p className="line-clamp-2 text-sm text-ink sm:text-base">{project.description}</p>
-              <div className="flex flex-col items-start gap-2">
+              <div className="flex flex-col items-start gap-3">
                 {project.tagRows.map((row, i) => (
-                  <div key={i} className="flex flex-wrap items-center gap-8">
+                  <div key={i} className="flex flex-wrap items-center gap-x-8 gap-y-3">
                     {row.map((tag) => (
                       <span key={tag.label} className="flex items-center gap-3">
                         <img src={tag.icon} alt="" className="size-6" />

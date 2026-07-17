@@ -24,7 +24,7 @@ export default function Home() {
               <Button variant="primary" to="/work">
                 View my work
               </Button>
-              <Button variant="secondary" to="/contact">
+              <Button variant="secondary" to="/about#contact">
                 Contact me
               </Button>
             </div>

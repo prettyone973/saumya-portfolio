@@ -5,7 +5,6 @@ const navLinks = [
   { label: "HOME", to: "/" },
   { label: "ABOUT ME", to: "/about" },
   { label: "MY WORK", to: "/work" },
-  { label: "CONTACT", to: "/contact" },
 ];
 
 export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
@@ -24,14 +23,14 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
           <img src={dot} alt="" className="size-4 sm:size-5" />
           <span className={`font-display text-lg sm:text-2xl ${nameText}`}>Product Designer</span>
         </div>
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-x-6 lg:gap-x-9">
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-2 sm:gap-x-12 lg:gap-x-16">
           {navLinks.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
               end={link.to === "/"}
               className={({ isActive }) =>
-                `border-b-[2.5px] px-2 py-2 text-base font-normal tracking-wide transition-colors duration-150 sm:text-lg lg:text-xl ${
+                `inline-block border-b-[2.5px] px-2 py-2 text-base font-normal tracking-wide transition-[color,border-color,transform] duration-200 ease-out hover:scale-110 active:scale-[1.15] sm:text-lg lg:text-xl ${
                   isActive ? activeText : `border-transparent ${mutedText} ${hoverBorder}`
                 }`
               }
