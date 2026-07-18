@@ -10,6 +10,7 @@
   --color-navy: #1b314c;
   --color-gold: #e0c68f;
   --color-gold-muted: #9c9d9b;
+  --color-gold-trim: #c9a35c;
   --color-cream-text: #d8cbc2;
   --color-beige: #fff1d5;
   --color-paper: #f8eacc;
@@ -82,4 +83,32 @@ body {
 .paper-texture > * {
   position: relative;
   z-index: 1;
+}
+
+/* Brushed gold metallic finish for card backs — warm, matte, restrained
+   sheen rather than a bright/glossy yellow gold. */
+.gold-metallic {
+  background: linear-gradient(
+    135deg,
+    #7c5a2c 0%,
+    #a9803f 22%,
+    #d4b06a 42%,
+    #b8905a 55%,
+    #8a6633 75%,
+    #6b4d24 100%
+  );
+}
+
+.gold-metallic::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 244, 214, 0.3) 46%,
+    rgba(255, 244, 214, 0.1) 55%,
+    transparent 68%
+  );
 }
