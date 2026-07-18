@@ -26,7 +26,7 @@ export const projects: Project[] = [
       [{ icon: uxCircle, label: "UX design" }],
     ],
     meta: { icon: research, label: "Research · IA · Wireframes" },
-    timeline: "Sep 2024 – Sep 2025",
+    timeline: "Sep 2024 – Feb 2025",
     team: "Solo project",
     role: "UX Designer & Researcher",
     tools: "Figma",
