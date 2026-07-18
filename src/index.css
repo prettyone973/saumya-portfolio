@@ -85,17 +85,34 @@ body {
   z-index: 1;
 }
 
-/* Brushed gold metallic finish for card backs — warm, matte, restrained
-   sheen rather than a bright/glossy yellow gold. */
+/* Brushed gold metallic finish for card backs — a lighter, warmer tone
+   closer to a genuine brushed-gold credit card, with a fine brushed-line
+   texture plus a restrained diagonal sheen (not glossy/bright). */
 .gold-metallic {
   background: linear-gradient(
     135deg,
-    #7c5a2c 0%,
-    #a9803f 22%,
-    #d4b06a 42%,
-    #b8905a 55%,
-    #8a6633 75%,
-    #6b4d24 100%
+    #cfa96a 0%,
+    #e9cf98 22%,
+    #f4e3b8 42%,
+    #dcb877 58%,
+    #c79f5e 78%,
+    #b48a4e 100%
+  );
+}
+
+.gold-metallic::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: repeating-linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.14) 0px,
+    rgba(255, 255, 255, 0.14) 1px,
+    transparent 1px,
+    transparent 3px
   );
 }
 
@@ -107,8 +124,37 @@ body {
   background: linear-gradient(
     115deg,
     transparent 30%,
-    rgba(255, 244, 214, 0.3) 46%,
-    rgba(255, 244, 214, 0.1) 55%,
+    rgba(255, 250, 230, 0.4) 46%,
+    rgba(255, 250, 230, 0.15) 55%,
     transparent 68%
   );
+}
+
+/* Shiny gradient gold ring — layered outside an element's own border/
+   background via mask-composite, so it never disturbs the element's fill,
+   text, or existing border. Host element needs `position: relative`. */
+.gold-shine-ring {
+  position: relative;
+}
+
+.gold-shine-ring::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  padding: 2px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    #fdf1cf 0%,
+    #e8c98a 22%,
+    #a67c3d 48%,
+    #e8c98a 74%,
+    #fdf1cf 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 }

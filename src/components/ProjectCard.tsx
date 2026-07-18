@@ -61,6 +61,27 @@ function BackFaceRow({ label, value }: { label: string; value: string }) {
   );
 }
 
+function FlipIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M4 12a8 8 0 0 1 13.66-5.66M20 12a8 8 0 0 1-13.66 5.66"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M17 3v4h-4M7 21v-4h4"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEnd }: Props) {
   // Measured from the untransformed perspective wrapper, not the tilted card
   // itself — reading rect off a 3D-rotated element returns its post-transform
@@ -76,10 +97,6 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
   const [sweepKey, setSweepKey] = useState(0);
 
   const [flipped, setFlipped] = useState(false);
-  // Once the card has flipped once (via the first anywhere-click or the
-  // explicit link), only the explicit "flip back" / "flip for details" link
-  // controls further flips — clicking the card body becomes inert.
-  const [hasFlippedOnce, setHasFlippedOnce] = useState(false);
 
   const scale = emphasis === "hovered" ? 1.05 : emphasis === "dimmed" ? 0.97 : 1;
 
@@ -122,16 +139,21 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
     onHoverEnd();
   }
 
-  function handleCardClick() {
-    if (hasFlippedOnce) return;
+  function flipToBack(e: React.MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
     setFlipped(true);
-    setHasFlippedOnce(true);
   }
 
-  function toggleFlip(e: React.MouseEvent) {
-    e.stopPropagation();
-    setFlipped((f) => !f);
-    setHasFlippedOnce(true);
+  function flipToFront() {
+    setFlipped(false);
+  }
+
+  function handleBackKeyDown(e: React.KeyboardEvent) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      flipToFront();
+    }
   }
 
   return (
@@ -145,7 +167,6 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
         onMouseEnter={handleMouseEnter}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        onClick={handleCardClick}
         animate={{
           scale,
           rotateX: tilt.rotateX,
@@ -156,7 +177,7 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
               : "0 4px 18px -4px rgba(46,42,31,0.1)",
         }}
         transition={{ duration: 0.22, ease: "easeOut" }}
-        className="relative w-full cursor-pointer"
+        className="relative w-full"
         style={{ transformStyle: "preserve-3d" }}
       >
         <motion.div
@@ -167,66 +188,81 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
         >
           {/* FRONT FACE */}
           <div
-            className="paper-texture relative w-full overflow-hidden rounded-3xl border-2 border-gold-trim bg-paper"
+            className="paper-texture relative w-full overflow-hidden rounded-3xl border border-paper-border bg-paper"
             style={faceBackfaceStyle}
           >
-            <div className="flex items-center gap-6 p-8 sm:gap-10 sm:p-10">
+            {/* Single wrapper so the flip button (a sibling of the Link) isn't
+                caught by the `.paper-texture > *` rule, which would force it
+                back to `position: relative` and break its corner placement. */}
+            <div className="relative">
               <Link
                 to={project.href}
-                onClick={(e) => e.stopPropagation()}
                 aria-label={`View ${project.title} case study`}
-                className="shrink-0"
+                className="block"
               >
-                <img
-                  src={project.mockup}
-                  alt=""
-                  className="h-52 w-28 object-contain sm:h-64 sm:w-32"
-                />
-              </Link>
-              <div className="flex min-w-0 flex-1 flex-col items-start justify-start gap-3">
-                <div className="flex flex-col items-start gap-3">
-                  <span className="rounded-full bg-navy px-3 py-1.5 text-sm font-medium text-gold whitespace-nowrap">
-                    {project.badge}
-                  </span>
-                  <h3 className="font-display text-xl text-navy sm:text-2xl">{project.title}</h3>
-                </div>
-                <p className="line-clamp-2 text-sm text-ink sm:text-base">
-                  {project.description}
-                </p>
-                <div className="flex flex-col items-start gap-3">
-                  {project.tagRows.map((row, i) => (
-                    <div key={i} className="flex flex-wrap items-center gap-x-8 gap-y-3">
-                      {row.map((tag) => (
-                        <span key={tag.label} className="flex items-center gap-3">
-                          <img src={tag.icon} alt="" className="size-6" />
-                          <span className="whitespace-nowrap text-sm font-medium text-ink">
-                            {tag.label}
-                          </span>
-                        </span>
-                      ))}
+                <div className="flex items-center gap-6 p-8 sm:gap-10 sm:p-10">
+                  <img
+                    src={project.mockup}
+                    alt=""
+                    className="h-52 w-28 shrink-0 object-contain sm:h-64 sm:w-32"
+                  />
+                  <div className="flex min-w-0 flex-1 flex-col items-start justify-start gap-3">
+                    <div className="flex flex-col items-start gap-3">
+                      <span className="rounded-full bg-navy px-3 py-1.5 text-sm font-medium text-gold whitespace-nowrap">
+                        {project.badge}
+                      </span>
+                      <h3 className="font-display text-xl text-navy sm:text-2xl">
+                        {project.title}
+                      </h3>
                     </div>
-                  ))}
-                  <span className="flex items-center gap-3">
-                    <img src={project.meta.icon} alt="" className="size-6" />
-                    <span className="text-sm font-medium text-ink">{project.meta.label}</span>
-                  </span>
+                    <p className="line-clamp-2 text-sm text-ink sm:text-base">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-col items-start gap-3">
+                      {project.tagRows.map((row, i) => (
+                        <div key={i} className="flex flex-wrap items-center gap-x-8 gap-y-3">
+                          {row.map((tag) => (
+                            <span key={tag.label} className="flex items-center gap-3">
+                              <img src={tag.icon} alt="" className="size-6" />
+                              <span className="whitespace-nowrap text-sm font-medium text-ink">
+                                {tag.label}
+                              </span>
+                            </span>
+                          ))}
+                        </div>
+                      ))}
+                      <span className="flex items-center gap-3">
+                        <img src={project.meta.icon} alt="" className="size-6" />
+                        <span className="text-sm font-medium text-ink">
+                          {project.meta.label}
+                        </span>
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <button
-                  type="button"
-                  onClick={toggleFlip}
-                  className="mt-1 text-sm font-medium text-navy underline decoration-navy/40 underline-offset-4 transition-colors hover:text-clay"
-                >
-                  Flip for details
-                </button>
-              </div>
+              </Link>
+              <button
+                type="button"
+                onClick={flipToBack}
+                aria-label={`Flip card for ${project.title} details`}
+                className="absolute right-4 top-4 z-10 flex size-9 items-center justify-center rounded-full bg-navy/10 text-navy transition-colors hover:bg-navy/20 sm:right-5 sm:top-5"
+              >
+                <FlipIcon className="size-4" />
+              </button>
             </div>
           </div>
 
           {/* BACK FACE */}
           <div
-            className="gold-metallic absolute inset-0 overflow-hidden rounded-3xl border-2 border-gold-trim"
+            role="button"
+            tabIndex={0}
+            onClick={flipToFront}
+            onKeyDown={handleBackKeyDown}
+            aria-label={`Flip back to ${project.title} card`}
+            className="gold-metallic absolute inset-0 cursor-pointer overflow-hidden rounded-3xl border-2 border-gold-trim"
             style={{ ...faceBackfaceStyle, transform: "rotateY(180deg)" }}
           >
+            <FlipIcon className="absolute right-4 top-4 size-4 text-ink/50 sm:right-5 sm:top-5" />
             <div className="relative flex h-full flex-col justify-center gap-5 p-8 sm:p-10">
               <h3 className="font-display text-2xl text-ink sm:text-3xl">{project.title}</h3>
               <dl className="flex flex-col gap-3">
@@ -235,13 +271,6 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
                 <BackFaceRow label="Role" value={project.role} />
                 <BackFaceRow label="Tools" value={project.tools} />
               </dl>
-              <button
-                type="button"
-                onClick={toggleFlip}
-                className="mt-1 self-start text-sm font-medium text-ink underline decoration-ink/40 underline-offset-4 transition-colors hover:text-ink/70"
-              >
-                Flip back
-              </button>
             </div>
           </div>
         </motion.div>
