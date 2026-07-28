@@ -1,4 +1,6 @@
 import NavyInfoCard, { type NavyInfoCardData } from "../../NavyInfoCard";
+import shoppingGardeningSelection from "../../../../assets/case-studies/eldermotion/shopping-gardening-selection.png";
+import communityGardening from "../../../../assets/case-studies/eldermotion/community-gardening.png";
 
 const cards: NavyInfoCardData[] = [
   {
@@ -13,12 +15,17 @@ const cards: NavyInfoCardData[] = [
   },
 ];
 
-function ScreenExamplePlaceholder({ label }: { label: string }) {
+const screens = [
+  { src: shoppingGardeningSelection, label: "Shopping / Gardening activity selection" },
+  { src: communityGardening, label: "Community Gardening — join activity" },
+];
+
+function ScreenExampleCard({ src, label }: { src: string; label: string }) {
   return (
-    <div className="flex aspect-[9/19.5] w-full max-w-[240px] shrink-0 flex-col items-center justify-center gap-2 rounded-[2rem] border border-dashed border-paper-border bg-paper/60 p-6 text-center">
-      <span className="text-sm font-medium text-clay">{label}</span>
-      <span className="text-xs text-clay/70">Screenshot coming soon</span>
-    </div>
+    <figure className="flex w-full max-w-[240px] shrink-0 flex-col items-center gap-3 rounded-xl border border-paper-border bg-paper p-4 sm:p-5">
+      <img src={src} alt={label} className="w-full object-contain" />
+      <figcaption className="text-center text-sm font-medium text-clay">{label}</figcaption>
+    </figure>
   );
 }
 
@@ -36,8 +43,9 @@ export default function FunctionalRequirementsPanel() {
       </div>
 
       <div className="mt-10 flex flex-wrap justify-center gap-8 sm:mt-12 sm:flex-nowrap sm:gap-10">
-        <ScreenExamplePlaceholder label="Shopping / Gardening activity selection" />
-        <ScreenExamplePlaceholder label="Community Gardening — join activity" />
+        {screens.map((screen) => (
+          <ScreenExampleCard key={screen.label} {...screen} />
+        ))}
       </div>
     </div>
   );
