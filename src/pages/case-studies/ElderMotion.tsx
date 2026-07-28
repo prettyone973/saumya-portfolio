@@ -81,7 +81,7 @@ export default function ElderMotion() {
             <img
               src={problemIllustration}
               alt=""
-              className="aspect-[586/980] w-full max-w-[220px] shrink-0 rounded-2xl border border-paper-border object-contain shadow-[0_4px_18px_-6px_rgba(46,42,31,0.12)] sm:max-w-[260px]"
+              className="aspect-[586/980] w-full max-w-[220px] shrink-0 object-contain sm:max-w-[260px]"
             />
           </div>
 
@@ -89,7 +89,7 @@ export default function ElderMotion() {
             <img
               src={solutionIllustration}
               alt=""
-              className="aspect-[713/980] w-full max-w-[220px] shrink-0 rounded-2xl border border-paper-border object-contain shadow-[0_4px_18px_-6px_rgba(46,42,31,0.12)] sm:max-w-[260px]"
+              className="aspect-[713/980] w-full max-w-[220px] shrink-0 object-contain sm:max-w-[260px]"
             />
             <div className="flex flex-col items-start gap-5 text-clay sm:gap-7">
               <p className="font-['Instrument_Sans'] text-base font-medium sm:text-xl">
