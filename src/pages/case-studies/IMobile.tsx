@@ -22,8 +22,7 @@ export default function IMobile() {
           { id: "design-system", label: "Design System" },
           { id: "before-after", label: "Before & After" },
         ]}
-        actionLabel="Prototype"
-        onAction={() => setPrototypeOpen(true)}
+        actions={[{ label: "Prototype", onClick: () => setPrototypeOpen(true) }]}
       />
 
       <div className="mx-auto max-w-[1280px] px-6 py-16 sm:px-10 lg:px-16 xl:px-20">

@@ -1,6 +1,7 @@
 import type { Project } from "../components/ProjectCard";
 import sizzleMockup from "../assets/images/sizzle-mockup.png";
 import imobileMockup from "../assets/images/imobile-mockup.png";
+import eldermotionMockup from "../assets/images/eldermotion-mockup.png";
 import appStore from "../assets/icons/app-store.svg";
 import appStore2 from "../assets/icons/app-store-2.svg";
 import foodBank from "../assets/icons/food-bank.svg";
@@ -8,6 +9,8 @@ import fintech from "../assets/icons/fintech.svg";
 import uxCircle from "../assets/icons/ux-circle.svg";
 import designServices from "../assets/icons/design-services.svg";
 import research from "../assets/icons/research.svg";
+import healthWellness from "../assets/icons/health-wellness.svg";
+import accessibility from "../assets/icons/accessibility.svg";
 
 export const projects: Project[] = [
   {
@@ -51,5 +54,26 @@ export const projects: Project[] = [
     team: "Solo project",
     role: "UI Designer & Researcher",
     tools: "Figma",
+  },
+  {
+    id: "eldermotion",
+    href: "/work/eldermotion",
+    badge: "UX Case Study",
+    title: "ElderMotion",
+    description:
+      "An accessible fitness app designed to help senior citizens stay active through simple, encouraging, and customizable experiences.",
+    mockup: eldermotionMockup,
+    tagRows: [
+      [
+        { icon: appStore, label: "Mobile app" },
+        { icon: healthWellness, label: "Health & Wellness" },
+      ],
+      [{ icon: uxCircle, label: "UX Design" }],
+    ],
+    meta: { icon: accessibility, label: "Accessibility · Group Project" },
+    timeline: "Feb 2026 – Mar 2026",
+    team: "Group project (4 members)",
+    role: "UX Designer & Researcher",
+    tools: "Figma, Miro",
   },
 ];

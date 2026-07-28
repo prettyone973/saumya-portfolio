@@ -13,6 +13,7 @@ import SizzleWireframes from "./pages/case-studies/sizzle/Wireframes";
 import SizzlePrototype from "./pages/case-studies/sizzle/Prototype";
 import IMobileBeforeAfter from "./pages/case-studies/imobile/BeforeAfter";
 import IMobileCaseStudy from "./pages/case-studies/IMobile";
+import ElderMotionCaseStudy from "./pages/case-studies/ElderMotion";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/work/sizzle/prototype" element={<SizzlePrototype />} />
         <Route path="/work/imobile" element={<IMobileCaseStudy />} />
         <Route path="/work/imobile/before-after" element={<IMobileBeforeAfter />} />
+        <Route path="/work/eldermotion" element={<ElderMotionCaseStudy />} />
         <Route path="/work/:slug" element={<CaseStudy />} />
       </Route>
     </Routes>
