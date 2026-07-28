@@ -160,7 +160,7 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
     <motion.div
       ref={outerRef}
       variants={cardVariants}
-      className="relative"
+      className="relative h-full"
       style={{ perspective: 1800 }}
     >
       <motion.div
@@ -177,30 +177,30 @@ export default function ProjectCard({ project, emphasis, onHoverStart, onHoverEn
               : "0 4px 18px -4px rgba(46,42,31,0.1)",
         }}
         transition={{ duration: 0.22, ease: "easeOut" }}
-        className="relative w-full"
+        className="relative h-full w-full"
         style={{ transformStyle: "preserve-3d" }}
       >
         <motion.div
           animate={{ rotateY: flipped ? 180 : 0 }}
           transition={{ duration: 0.56, ease: [0.22, 1, 0.36, 1] }}
-          className="relative w-full"
+          className="relative h-full w-full"
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* FRONT FACE */}
           <div
-            className="paper-texture relative w-full overflow-hidden rounded-3xl border border-paper-border bg-paper"
+            className="paper-texture relative h-full w-full overflow-hidden rounded-3xl border border-paper-border bg-paper"
             style={faceBackfaceStyle}
           >
             {/* Single wrapper so the flip button (a sibling of the Link) isn't
                 caught by the `.paper-texture > *` rule, which would force it
                 back to `position: relative` and break its corner placement. */}
-            <div className="relative">
+            <div className="relative h-full">
               <Link
                 to={project.href}
                 aria-label={`View ${project.title} case study`}
-                className="block"
+                className="block h-full"
               >
-                <div className="flex items-center gap-6 p-8 sm:gap-10 sm:p-10">
+                <div className="flex h-full items-center gap-6 p-8 sm:gap-10 sm:p-10">
                   <img
                     src={project.mockup}
                     alt=""
